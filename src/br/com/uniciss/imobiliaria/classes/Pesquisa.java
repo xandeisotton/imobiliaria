@@ -5,7 +5,6 @@ public class Pesquisa {
 	void PesquisaCliente() {
 
 	}
-
 	void PesquisaFuncionarios() {
 
 	}

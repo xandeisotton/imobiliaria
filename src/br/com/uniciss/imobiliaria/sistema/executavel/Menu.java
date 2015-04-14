@@ -9,8 +9,8 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
-import br.com.uniciss.imobiliaria.sistema.LerBanco;
-import br.com.uniciss.imobiliaria.sistema.Usuario;
+import br.com.uniciss.imobiliaria.classes.LerBanco;
+import br.com.uniciss.imobiliaria.classes.Usuario;
 
 public class Menu {
 		
@@ -38,7 +38,9 @@ public class Menu {
 		System.out.println("2 - Cadastrar imóvel");
 		System.out.println("3 - Agendar visita");
 		System.out.println("4 - Listar visitas");
-
+		System.out.println("5 - Listar Clientes");
+		System.out.println("6 - Listar visitas");
+		
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch(opc){

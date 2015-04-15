@@ -54,19 +54,19 @@ public abstract class Cliente extends Pessoa {
 		System.out.println("Informe o endereco do cliente!");
 		setEndereco(cadastro.nextLine());
 
-		System.out.println("Informe o numero do CPF do cliente!");
+		System.out.println("Informe o número do CPF do cliente!");
 		setCpf(cadastro.nextLine());
 		//        Validação DE CPF:
 		/*if (ValidaCpf.isCpf(getCpf())==false){	
 			System.out.println("CPF Invalido");
 		while (ValidaCpf.isCpf(getCpf())== false){
-			System.out.println("Informe o numero do CPF do cliente!");
+			System.out.println("Informe o número do CPF do cliente!");
 			setCpf(cadastro.nextLine());			
 		}
 		 }
 		*/
 
-		System.out.println("Informe o numero do telefone do ciente!");
+		System.out.println("Informe o número do telefone do ciente!");
 		setTelefone(cadastro.nextLine());
 
 		System.out.println("Informe o banco em que o cliente tem conta!");

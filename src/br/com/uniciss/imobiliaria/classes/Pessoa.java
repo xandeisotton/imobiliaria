@@ -3,7 +3,7 @@ package br.com.uniciss.imobiliaria.classes;
 public abstract class Pessoa {
 	
 	protected String nome;
-	protected String endereço;
+	protected String endereco;
 	protected String cpf;
 	protected String telefone;
 	
@@ -13,17 +13,23 @@ public abstract class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 	public String getCpf() {
 		return cpf;
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	public String getTelefone(){
+		return telefone;
+	}
+	public void setTelefone(String telefone){
+		this.telefone = telefone;
 	}
 	
 }

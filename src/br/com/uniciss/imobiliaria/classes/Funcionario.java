@@ -40,13 +40,8 @@ public class Funcionario extends Cadastros {
 		System.out.println("Insira o CPF :");
 		String cpf = scanner.next();
 		String validaCpf = String.valueOf(cpf);
-		if 	(validaCpf.equals("00000000000") || validaCpf.equals("11111111111")||
-			validaCpf.equals("22222222222") || validaCpf.equals("33333333333") ||
-			validaCpf.equals("44444444444") || validaCpf.equals("55555555555") ||
-			validaCpf.equals("66666666666") ||validaCpf.equals("77777777777") ||
-			validaCpf.equals("88888888888") ||validaCpf.equals("99999999999") ||
-		   (validaCpf.length() != 11)) {
-			throw new IllegalArgumentException("CPF INVALIDO");
+		if (validaCpf.length() != 11) {
+			throw new IllegalArgumentException("O CPF deve ter 11 caracteres!");
 		} else {  
 			boolean achou = false;
 			String linha = "";

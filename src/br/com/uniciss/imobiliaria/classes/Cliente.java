@@ -1,11 +1,10 @@
 package br.com.uniciss.imobiliaria.classes;
 
-import java.awt.List;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+
 import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
 
 public abstract class Cliente extends Pessoa {
@@ -85,7 +84,7 @@ public abstract class Cliente extends Pessoa {
 
 			case 2:
 				Menu m = new Menu();
-				m.Menu();
+				m.Login();
 				break;
 			default:
 				System.out.println("Você informou uma opção inválida!");
@@ -111,7 +110,7 @@ public abstract class Cliente extends Pessoa {
 
 		case 1:
 			Menu m = new Menu();
-			m.Menu();
+			m.Login();
 			break;
 
 		case 2:

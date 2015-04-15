@@ -73,9 +73,6 @@ import java.util.Scanner;
 				f = new Secretário();
 			}
 
-			listaFuncionarios.add(f);
-
-			mapaDeLogins.put(f.getLogin(), f);
 
 			try {
 				BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo,

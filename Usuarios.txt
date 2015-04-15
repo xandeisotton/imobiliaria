@@ -1,3 +1,4 @@
 Usuario,admin,admin,0
 Usuario,corretor,corretor,1
-Usuario,secretario,123,2
+Usuario,secretario,123,
+Usuario,,null,2805521,1,null

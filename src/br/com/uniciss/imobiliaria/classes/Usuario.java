@@ -1,9 +1,9 @@
 package br.com.uniciss.imobiliaria.classes;
 
 public class Usuario {
-	protected String login;
-	protected String senha;
-	protected String tipo;
+	private String login;
+	private String senha;
+	private String tipo;
 	
 	public String getLogin() {
 		return login;

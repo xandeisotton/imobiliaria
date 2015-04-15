@@ -62,7 +62,7 @@ import java.util.Scanner;
 
 		File arquivo = new File("Funcionarios.txt");
 
-		// Teste para verificar se o funcionario é dentista ou secretaria
+		// Teste para verificar se o funcionario é corretor ou secretaria
 		if (opcao == 1 || opcao == 2) {
 			Funcionario f;
 			if (opcao == 1) {

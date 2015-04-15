@@ -1,7 +1,7 @@
 package br.com.uniciss.imobiliaria.classes;
 
 
-public class Vender {
+public class Vendas {
 
 	double valor;
 }

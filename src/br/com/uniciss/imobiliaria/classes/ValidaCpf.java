@@ -16,7 +16,7 @@ public class ValidaCpf {
 		 /*sm=somar as parcelas calculadas
 		  * i=controle FOR
 		  * r=resto divisão
-		  */
+		  */ 
 		 char dig10, dig11;
 		 int sm, i, r, num, peso;
 		 try{

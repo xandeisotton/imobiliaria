@@ -35,14 +35,14 @@ public class Funcionario extends Cadastros {
 				+ "\n" + "\n");
 		arq.close();
 	}
-
+ 
 	static void validaCpf() throws IOException {
 		System.out.println("Insira o CPF :");
 		String cpf = scanner.next();
 		String validaCpf = String.valueOf(cpf);
 		if (validaCpf.length() != 11) {
 			throw new IllegalArgumentException("O CPF deve ter 11 caracteres!");
-		} else {
+		} else {  
 			boolean achou = false;
 			String linha = "";
 			BufferedReader in = new BufferedReader(new FileReader(

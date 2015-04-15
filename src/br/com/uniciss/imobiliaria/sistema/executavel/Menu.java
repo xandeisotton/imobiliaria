@@ -30,7 +30,7 @@ public class Menu {
 		
 	}
 	
-	public void menuSecretario(){
+	public void menuSecretario() throws IOException{
 		int opc;
 		System.out.println("Secretario");
 		
@@ -40,7 +40,7 @@ public class Menu {
 		System.out.println("4 - Listar visitas");
 		System.out.println("5 - Listar Clientes");
 		System.out.println("6 - Listar visitas");
-		
+		System.out.println("7- Sair");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch(opc){
@@ -53,10 +53,27 @@ public class Menu {
 			break;
 		case 2:
 			
-
-		default:
+			break;
+case 7:
+	System.out.println("Deseja voltar ao menu principal?");
+			System.out.println("1-Sim");
+			System.out.println("2-Não");
+			opc = s.nextInt();
+			switch(opc){
+			case 1:
+				Menu m = new Menu();
+				m.Login();
+					
+				break;
+			case 2:
+				System.exit(0); 
+			break;
+			
+			
+			default:
 			System.out.println("Opção inválida.");
-		}
+				}
+			}
 	}
 	
 	public void Login() throws IOException{

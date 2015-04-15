@@ -19,6 +19,7 @@ public class LerBanco {
 				// Instanciacao de um novo usuario
 				Usuario p = new Usuario();
 
+				
 				// Passa a ordem de cada campo
 				p.setLogin(palavras[1]);
 				p.setSenha(palavras[2]);

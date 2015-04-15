@@ -68,7 +68,8 @@ public class Menu {
 			System.out.println("1 - Cadastrar Imóvel Vendido");
 			System.out.println("2 - Cadastrar Imóvel Alugado");
 			System.out.println("3 - Listar Visitas Agendadas");
-			System.out.println("4- Sair");
+			System.out.println("4 - Buscar Imóvel por código");
+			System.out.println("5 - Sair");
 			s = new Scanner(System.in);
 			opc = s.nextInt();
 			switch(opc){
@@ -82,7 +83,10 @@ public class Menu {
 			case 3:		
 				
 				break;
-			case 4:
+			case 4:		
+				
+				break;
+			case 5:
 				System.out.println("Escolha:");
 				System.out.println("1-Sair do Sistema e fazer login novamente");
 				System.out.println("2-Apenas Encerrar");
@@ -114,8 +118,9 @@ public class Menu {
 		System.out.println("3 - Agendar visita");
 		System.out.println("4 - Listar visitas");
 		System.out.println("5 - Listar Clientes");
-		System.out.println("6 - Listar visitas");
-		System.out.println("7- Sair");
+		System.out.println("6 - Listar Imóveis");
+		System.out.println("7 - Buscar Imóveis pelo código");
+		System.out.println("8 - Sair");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch(opc){
@@ -137,7 +142,10 @@ public class Menu {
 		case 6:		
 	
 			break;
-		case 7:
+		case 7:		
+			
+			break;
+		case 8:
 			System.out.println("Escolha:");
 			System.out.println("1-Sair do Sistema e fazer login novamente");
 			System.out.println("2-Apenas Encerrar");

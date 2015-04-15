@@ -3,12 +3,10 @@ package br.com.uniciss.imobiliaria.classes;
 import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.Scanner;
+import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
 
 public abstract class Cliente extends Pessoa {
 
@@ -76,7 +74,7 @@ public abstract class Cliente extends Pessoa {
 		g.grava("Cliente.txt", toString());
 
 		Scanner entrada = new Scanner(System.in);
-		System.out.println("O que deseja fazer?\n 1-Cadastrar novamente!\n 2-Voltar ao menu!");
+		System.out.println("O que deseja fazer?\n 1-Cadastrar novamente. \n 2-Voltar ao Menu.");
 		int cont = entrada.nextInt();
 		do {
 			switch (cont) {
@@ -87,7 +85,8 @@ public abstract class Cliente extends Pessoa {
 
 			case 2:
 				Menu m = new Menu();
-				m.menus();
+				m.Menu();
+				break;
 			default:
 				System.out.println("Você informou uma opção inválida!");
 			}
@@ -105,21 +104,23 @@ public abstract class Cliente extends Pessoa {
 			linha = br.readLine();
 		}
 		Scanner entrada = new Scanner(System.in);
-		System.out
-				.println("O que deseja fazer?\n 1-Voltar ao Menu\n 2-Listar Novamente!");
+		System.out.println("O que deseja fazer?\n 1-Voltar ao Menu. \n 2-Listar Novamente.");
 		int cont = entrada.nextInt();
+		do{
 		switch (cont) {
 
 		case 1:
-			Menu menu = new Menu();
-			menu.menus();
+			Menu m = new Menu();
+			m.Menu();
 			break;
 
 		case 2:
 			ListaCliente();
 			break;
-
+		default:
+			System.out.println("você informou uma opcao inválida!");
 		}
+		}while((cont != 1)||(cont != 2));
 		entrada.close();
 		br.close();
 	}

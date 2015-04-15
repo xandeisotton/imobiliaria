@@ -40,9 +40,9 @@ public class Menu {
 			break;
 		
 		case 3:		
-			System.out.println("Deseja voltar ao menu principal?");
-			System.out.println("1-Sim");
-			System.out.println("2-Não");
+			System.out.println("Escolha:");
+			System.out.println("1-Sair do Sistema e fazer login novamente");
+			System.out.println("2-Apenas Encerrar");
 			opc = s.nextInt();
 			switch(opc){
 			case 1:
@@ -83,9 +83,9 @@ public class Menu {
 				
 				break;
 			case 4:
-				System.out.println("Deseja voltar ao menu principal?");
-				System.out.println("1-Sim");
-				System.out.println("2-Não");
+				System.out.println("Escolha:");
+				System.out.println("1-Sair do Sistema e fazer login novamente");
+				System.out.println("2-Apenas Encerrar");
 				opc = s.nextInt();
 				switch(opc){
 				case 1:
@@ -138,9 +138,9 @@ public class Menu {
 	
 			break;
 		case 7:
-			System.out.println("Deseja voltar ao menu principal?");
-			System.out.println("1-Sim");
-			System.out.println("2-Não");
+			System.out.println("Escolha:");
+			System.out.println("1-Sair do Sistema e fazer login novamente");
+			System.out.println("2-Apenas Encerrar");
 			opc = s.nextInt();
 			switch(opc){
 			case 1:

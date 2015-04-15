@@ -22,27 +22,14 @@ public class Funcionario extends Cadastros {
 		setLogin(scanner.nextLine());
 		System.out.println("Insira sua senha :");
 		setSenha(scanner.next());
-		System.out.println("Insira o codigo do funcionario :");
-		codigo = scanner.next();
-		validaCpf();
-		cadastrosList.add(getLogin());
-		cadastrosList.add(getSenha());
-
-		FileWriter arq = new FileWriter("Funcionario.txt", true);
-		PrintWriter gravarArq = new PrintWriter(arq);
-		gravarArq.printf("Nome: " + getLogin() + "; Senha: " + getSenha()
-				+ "; Código: " + codigo + "; Cpf: " + cpf + "; Tipo: " + tipo
-				+ "\n" + "\n");
-		arq.close();
-	}
- 
-	static void validaCpf() throws IOException {
+		System.out.println("Insira o tipo funcionario :");
+		tipo = scanner.next();
 		System.out.println("Insira o CPF :");
 		String cpf = scanner.next();
-		String validaCpf = String.valueOf(cpf);
-		if (validaCpf.length() != 11) {
-			throw new IllegalArgumentException("O CPF deve ter 11 caracteres!");
-		} else {  
+		String quantidadeCpf = String.valueOf(cpf);
+		if (quantidadeCpf.length() != 11) {
+			System.out.println("O CPF deve ter 11 caracteres!");
+
 			boolean achou = false;
 			String linha = "";
 			BufferedReader in = new BufferedReader(new FileReader(
@@ -51,10 +38,20 @@ public class Funcionario extends Cadastros {
 				if (linha.contains(cpf)) {
 					System.out.println("Cpf já está cadastrado");
 					achou = true;
-					validaCpf();
-				}
-			}
+					break;
 
+				}
+
+				GravaTxt grava = new GravaTxt();
+				grava.toString();
+			}
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Funcionario [codigo=" + codigo + ", tipo=" + tipo
+				+ ", NomeCompleto=" + NomeCompleto + ", login=" + login
+				+ ", senha=" + senha + "]";
 	}
 }

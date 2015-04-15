@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class GravaTxt {
-	// E utilizada para gravar no arquivo .txt
+	// É utilizada para gravar no arquivo .txt
 	
 	public void grava(String aonde,String oque){
 		File ficheiro = new File(aonde); 

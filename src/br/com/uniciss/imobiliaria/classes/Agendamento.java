@@ -138,7 +138,7 @@ public class Agendamento {
 			if ((new Date()).getTime() < dataAtual.getTime()) {
 				setHorario(horarioInformado);
 
-			} else if ((new Date()).getTime() >= dataAtual.getTime() || ((hora11e30).getTime() < dataAtual.getTime()) && ((hora13).getTime() > dataAtual.getTime())){
+			} else if ((new Date()).getTime() >= dataAtual.getTime() || ((hora11).getTime() < dataAtual.getTime()) && ((hora13).getTime() > dataAtual.getTime())){
 				System.out.println("Não é possivel marcar consultas neste horário, informe outro horário!");
 				System.out.println("");
 				verificaHoras();

@@ -202,6 +202,7 @@ public class Menu {
 		} catch(NullPointerException b){
 			
 			System.out.println("Erro!");
+			System.out.println(b.getMessage());
 		}
 	}
 

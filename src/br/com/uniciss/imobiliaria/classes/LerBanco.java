@@ -23,7 +23,7 @@ public class LerBanco {
 				// Passa a ordem de cada campo
 				p.setLogin(palavras[1]);
 				p.setSenha(palavras[2]);
-	//			p.setTipo(palavras[3]);
+				p.setTipo(palavras[3]);
 
 				listaUsuario.put(p.getLogin(), p);
 				linha = lerArq.readLine();

@@ -3,14 +3,13 @@ package br.com.uniciss.imobiliaria.classes;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
 
 //import br.com.uniciss.imobiliaria.classes.ValidaCpf;
 import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
@@ -152,6 +151,7 @@ public class Cliente extends Pessoa {
 		Scanner entrada = new Scanner(System.in);
 		boolean achou = false;
 		String linha = "";
+		@SuppressWarnings("unused")
 		String nomeArquivo = "Cliente.txt";
 		System.out.println("Informe o código do cliente");
 		String codigo = entrada.next();

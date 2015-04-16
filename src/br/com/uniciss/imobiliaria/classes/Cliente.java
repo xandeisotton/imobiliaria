@@ -2,12 +2,17 @@ package br.com.uniciss.imobiliaria.classes;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+
+
+
+
 //import br.com.uniciss.imobiliaria.classes.ValidaCpf;
 import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
 
-public abstract class Cliente extends Pessoa {
+public class Cliente extends Pessoa {
 
 	protected String banco;
 	protected String numConta;
@@ -45,6 +50,7 @@ public abstract class Cliente extends Pessoa {
 				+ telefone;
 	} 
 
+	@SuppressWarnings("resource")
 	public void CadastroCliente() throws Exception {
 		cadastro = new Scanner(System.in);
 
@@ -101,7 +107,6 @@ public abstract class Cliente extends Pessoa {
 		} while ((cont != 1) || (cont != 2));
 	}
 
-	@SuppressWarnings("resource")
 	public void ListaCliente() throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 				new FileInputStream("Cliente.txt")));
@@ -131,5 +136,42 @@ public abstract class Cliente extends Pessoa {
 		}while((cont != 1)||(cont != 2));
 		entrada.close();
 		br.close();
+	}
+	//esse é onde eu comecei com meu arquivo de pesquisa
+	@SuppressWarnings("unused")
+	public void PesquisaCliente() throws Exception {
+		Scanner entrada = new Scanner(System.in);
+		boolean achou = false;
+		String linha = "";
+		String nomeArquivo = "Cliente.txt";
+		System.out.println("Informe o código do cliente");
+		String codigo = entrada.next();
+		BufferedReader in = new BufferedReader(new FileReader("Cliente.txt"));
+		try{
+			while((linha = in.readLine())!=null){
+				if(linha.contains(codigo)){
+					System.out.println(linha);
+					achou = true;
+				}
+			}
+			if(!achou){
+				System.out.println("Arquivo não existente!\n");
+				
+			}
+		}catch (NullPointerException erro) {
+		}
+		System.out.println("o que deseja fazer?\n"+"1-Pesquisar Novamente!"+"2-Voltar ao Menu!\n");
+		int cont = entrada.nextInt();
+		switch(cont){
+		case 1:
+			PesquisaCliente();
+			break;
+			
+		case 2:
+			Menu m = new Menu();
+			m.menuSecretario();
+		}
+		in.close();
+		entrada.close();
 	}
 }

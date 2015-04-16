@@ -2,7 +2,7 @@ package br.com.uniciss.imobiliaria.classes;
 
 public class Testes {
 
-	private void cadastrarCliente() {
+	/*private void cadastrarCliente() {
 		
 		Cliente c=new Cliente();
 		codCliente++;
@@ -10,4 +10,5 @@ public class Testes {
 		c.cadastrarClientes();
 		menu();
 	}
+*/
 }

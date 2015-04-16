@@ -25,11 +25,12 @@ public class Menu {
 	
 	public void menuAdmin()throws IOException{
 		int opc;
-		System.out.println("ADMINISTRADOR");
-		
+		System.out.println("       ADMINISTRADOR");
+		System.out.println("------------------------");
 		System.out.println("1 - Cadastrar Secretária");
 		System.out.println("2 - Cadastrar Corretor");
 		System.out.println("3- Sair");
+		System.out.println("------------------------");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch(opc){
@@ -64,12 +65,13 @@ public class Menu {
 	
 	public void menuCorretor() throws IOException{
 			int opc;
-			System.out.println("CORRETOR");
-			
+			System.out.println("           CORRETOR");
+			System.out.println("----------------------------");
 			System.out.println("1 - Cadastrar Imóvel Vendido");
 			System.out.println("2 - Cadastrar Imóvel Alugado");
 			System.out.println("3 - Listar Visitas Agendadas");
 			System.out.println("4- Sair");
+			System.out.println("----------------------------");
 			s = new Scanner(System.in);
 			opc = s.nextInt();
 			switch(opc){
@@ -108,15 +110,16 @@ public class Menu {
 	
 	public void menuSecretario() throws IOException{
 		int opc;
-		System.out.println("Secretario");
-		
+		System.out.println("      Secretário");
+		System.out.println("----------------------");
 		System.out.println("1 - Cadastrar cliente");
 		System.out.println("2 - Cadastrar imóvel");
 		System.out.println("3 - Agendar visita");
 		System.out.println("4 - Listar visitas");
 		System.out.println("5 - Listar Clientes");
 		System.out.println("6 - Listar visitas");
-		System.out.println("7- Sair");
+		System.out.println("7 - Sair");
+		System.out.println("---------------------- ");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch(opc){

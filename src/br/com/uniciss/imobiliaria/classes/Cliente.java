@@ -3,17 +3,21 @@ package br.com.uniciss.imobiliaria.classes;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
-
-
-
 
 //import br.com.uniciss.imobiliaria.classes.ValidaCpf;
 import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
 
 public class Cliente extends Pessoa {
-
+	List<Object> listaPacientes = new ArrayList<Object>();
+	public static Map<String, Cliente> mapaDeClientes = new HashMap<String, Cliente>();
 	protected String banco;
 	protected String numConta;
 	protected String codigo;
@@ -84,6 +88,11 @@ public class Cliente extends Pessoa {
 		System.out.println("Informe o codigo do cliente!");
 		setCodigo(cadastro.nextLine());
 
+		//TESTE
+		//Cliente c = new Cliente(nome, cpf, endereco, telefone);
+		//ListaCliente.add(c);
+		//mapaDeClientes.put(c.getNome(), c);
+		
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());
 
@@ -107,7 +116,7 @@ public class Cliente extends Pessoa {
 		} while ((cont != 1) || (cont != 2));
 	}
 
-	public void ListaCliente() throws Exception {
+	public void listaCliente() throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 				new FileInputStream("Cliente.txt")));
 		String linha = br.readLine();
@@ -128,7 +137,7 @@ public class Cliente extends Pessoa {
 			break;
 
 		case 2:
-			ListaCliente();
+			listaCliente();
 			break;
 		default:
 			System.out.println("você informou uma opcao inválida!");
@@ -138,8 +147,8 @@ public class Cliente extends Pessoa {
 		br.close();
 	}
 	//esse é onde eu comecei com meu arquivo de pesquisa
-	@SuppressWarnings("unused")
-	public void PesquisaCliente() throws Exception {
+	//@SuppressWarnings("unused")
+	public void pesquisaCliente() throws Exception {
 		Scanner entrada = new Scanner(System.in);
 		boolean achou = false;
 		String linha = "";
@@ -160,11 +169,13 @@ public class Cliente extends Pessoa {
 			}
 		}catch (NullPointerException erro) {
 		}
-		System.out.println("o que deseja fazer?\n"+"1-Pesquisar Novamente!"+"2-Voltar ao Menu!\n");
+		System.out.println("Qual ação deseja realizar?");
+		System.out.println("1 - Pesquisar");
+		System.out.println("2 - Retornar ao menu principal");
 		int cont = entrada.nextInt();
 		switch(cont){
 		case 1:
-			PesquisaCliente();
+			pesquisaCliente();
 			break;
 			
 		case 2:
@@ -174,4 +185,35 @@ public class Cliente extends Pessoa {
 		in.close();
 		entrada.close();
 	}
+	
+/*	ISSO É UM TESTE, FAVOR NAO APAGAR 
+ * 
+ * public static void preencheMapa() throws IOException {
+		Iterator<Cliente> i = listaCliente().iterator();
+
+		while (i.hasNext()) {
+			Cliente c = i.next();
+			mapaDeClientes.put(c.getNome(), c);
+		}
+	}
+	public static Cliente buscaPorNome(String nomeBusca) throws IOException {
+		preencheMapa();
+		Cliente c = mapaDeClientes.get(nomeBusca);
+		try {
+			String nome = c.getNome();
+			String cpf = c.getCpf();
+			String endereco = c.getEndereco();
+			String telefone = c.getTelefone();
+		
+
+			c = new Cliente(nome, cpf, endereco, telefone);
+			return c;
+			
+		} catch (NullPointerException n) {
+			n.getMessage();
+			return c;
+		}
+	}*/
+
+
 }

@@ -14,8 +14,8 @@ import br.com.uniciss.imobiliaria.classes.Visitas;
 
 public class Agendamento {
 
-	ArrayList<Visitas> listaConsultas = new ArrayList<Visitas>();
-	Map<String, Visitas> mapaConsultas = new HashMap<String, Visitas>();
+	ArrayList<Agendamento> listaVisitas = new ArrayList<Agendamento>();
+	Map<String, Agendamento> mapaVisitas = new HashMap<String, Agendamento>();
 	
 	private String nome;
 	private String data;
@@ -50,7 +50,7 @@ public class Agendamento {
 	
 	@Override
 	public String toString() {
-		return "Consulta," + nome + "," + data + "," + horario + ","
+		return "Visita," + nome + "," + data + "," + horario + ","
 				+ observações;
 	}
 
@@ -74,26 +74,29 @@ public class Agendamento {
 
 	@SuppressWarnings("unused")
 	public boolean verificaData() {
-
+		LerBanco lb = new LerBanco();
+		lb.leituraVisitas(mapaVisitas);
+		
 		String data;
 
 		System.out.println("Informe o dia da visita: ");
-		String a = s.nextLine();
+		String dataInformadaString = s.nextLine();
 
 		Date hoje = GregorianCalendar.getInstance().getTime();
 		SimpleDateFormat formata = new SimpleDateFormat("dd/MM/yyyy");
 		data = formata.format(hoje);
 
-		Date d = new Date();
+		Date dataInformada = new Date();
 		formata = new SimpleDateFormat("dd/MM/yyyy");
 		formata.setLenient(false);
+		
 		try {
-			d = formata.parse(a);
+			dataInformada = formata.parse(dataInformadaString);
 
-			if ((new Date()).getTime() < d.getTime()) {
-				setData(a);
+			if ((new Date()).getTime() < dataInformada.getTime()) {
+				setData(dataInformadaString);
 
-			} else if ((new Date()).getTime() >= d.getTime()) {
+			} else if ((new Date()).getTime() >= dataInformada.getTime()) {
 				System.out.println("Não é possivel marcar consultas para este dia, informe outra data!");
 				System.out.println("");
 				verificaData();
@@ -110,6 +113,9 @@ public class Agendamento {
 
 	@SuppressWarnings("unused")
 	public boolean verificaHoras() {
+		
+		LerBanco lb = new LerBanco();
+		lb.leituraVisitas(mapaVisitas);
 
 		s = new Scanner(System.in);
 		String hora;
@@ -118,31 +124,37 @@ public class Agendamento {
 		String horarioInformado = s.nextLine();
 		
 
-		Date hoje = GregorianCalendar.getInstance().getTime();
+		Date agora = GregorianCalendar.getInstance().getTime();
 		SimpleDateFormat formata = new SimpleDateFormat("h:mm - a");
-		hora = formata.format(hoje);
-		
-		
+		hora = formata.format(agora);
 
-		Date dataAtual = new Date();
+		Date horaInformada = new Date();
 		formata = new SimpleDateFormat("HH:mm");
 		formata.setLenient(false);
 
 		try {
-			dataAtual = formata.parse(horarioInformado);
+			horaInformada = formata.parse(horarioInformado);
 			Date hora11 = formata.parse("11:00");
 			Date hora13 = formata.parse("13:00");
-			Date hora18 = formata.parse("18:00");
+			Date hora0 = formata.parse("0:00");
 			Date hora7 = formata.parse("7:00");
+			Date hora23 = formata.parse("23:59");
+			Date hora20 = formata.parse("20:00");
 			
-			if ((new Date()).getTime() < dataAtual.getTime()) {
-				setHorario(horarioInformado);
-
-			} else if ((new Date()).getTime() >= dataAtual.getTime() || ((hora11).getTime() < dataAtual.getTime()) && ((hora13).getTime() > dataAtual.getTime())){
+			if (((hora11).getTime() < horaInformada.getTime()) && ((hora13).getTime() > horaInformada.getTime()) || ((hora7).getTime() > horaInformada.getTime() && (hora0).getTime() <= horaInformada.getTime()) || (hora20).getTime() < horaInformada.getTime() && ((hora23).getTime() >= horaInformada.getTime())){
 				System.out.println("Não é possivel marcar consultas neste horário, informe outro horário!");
 				System.out.println("");
 				verificaHoras();
+			}else{
+				setHorario(horarioInformado);
 			}
+			
+			if(mapaVisitas.containsKey(getData()+""+getHorario())){
+				System.out.println("Já há uma visita agendada para este horário, por favor informe outro horario!");
+				System.out.println("");
+				verificaHoras();
+			}
+			
 		} catch (ParseException e) {
 			System.out.println("Você informou um horário inválido!");
 			System.out.println("");

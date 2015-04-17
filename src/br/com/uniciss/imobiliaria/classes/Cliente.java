@@ -1,6 +1,7 @@
 package br.com.uniciss.imobiliaria.classes;
 
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,8 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
-//import br.com.uniciss.imobiliaria.classes.ValidaCpf;
+import br.com.uniciss.imobiliaria.classes.ValidaCpf;
 import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
 
 public class Cliente extends Pessoa {
@@ -69,14 +69,14 @@ public class Cliente extends Pessoa {
 		System.out.println("Informe o número do CPF do cliente!");
 		setCpf(cadastro.nextLine());
 		//        Validação DE CPF:
-		/*if (ValidaCpf.isCpf(getCpf())==false){	
+		if (ValidaCpf.isCpf(getCpf())==false){	
 			System.out.println("CPF Invalido");
+		}
 		while (ValidaCpf.isCpf(getCpf())== false){
 			System.out.println("Informe o número do CPF do cliente!");
-			setCpf(cadastro.nextLine());			
-		}
+			setCpf(cadastro.nextLine());				
 		 }
-		*/
+		
 
 		System.out.println("Informe o número do telefone do ciente!");
 		setTelefone(cadastro.nextLine());

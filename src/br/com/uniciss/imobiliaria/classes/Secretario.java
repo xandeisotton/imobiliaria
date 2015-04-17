@@ -41,8 +41,16 @@ public class Secretario extends Funcionario {
 		System.out.println("Insira o endereço:(EX:Rua tal, 49)");
 		setEndereco(insere.nextLine());
 
-		System.out.println("Insira o numero do CPF:(EX:000.000.000-69)");
+		System.out.println("Insira o numero do CPF:(Somente números.)");
 		setCpf(insere.nextLine());
+		//            Valida CPF
+		if (ValidaCpf.isCpf(getCpf())==false){	
+			System.out.println("CPF Invalido,tente novamente:");
+		}
+		while (ValidaCpf.isCpf(getCpf())== false){
+			System.out.println("Insira o numero do CPF:(Somente números.)");
+			setCpf(insere.nextLine());		
+		}
 
 		System.out
 				.println("Insira o telefone do secretário:(EX:(00)0000-0000)");
@@ -68,13 +76,13 @@ public class Secretario extends Funcionario {
 	}
 
 	public String toString() {
-		return "Funcionario," + getCodigo() + "," + nome + "," + cpf + ","
+		return "Funcionario," + getCod() + "," + nome + "," + cpf + ","
 				+ endereco + "," + u.getTipo();
 	}
 
 	public String toStringUsuarios() {
 		return "Usuario," + "," + u.getLogin() + "," + u.getSenha() + ","
-				+ u.getTipo() + "," + getCodigo();
+				+ u.getTipo() + "," + getCod();
 	}
 
 	public void alterarSecretario() {

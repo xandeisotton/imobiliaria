@@ -3,3 +3,5 @@ Usuario,corretor,corretor,1
 Usuario,secretario,123,
 Usuario,,null,2805521,1,null
 Usuario,,null,carol,2,null
+Usuario,,renan.ernesto,1234,2,null
+Usuario,,1234,1234,1,null

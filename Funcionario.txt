@@ -1,10 +1,1 @@
-Funcionario,null,Alexnadre,null,1
-<<<<<<< HEAD
-Funcionario,null,gfdgd,123,gfd,2
-Funcionario,null,joao da silva,123,rua das torres,1
-Funcionario,null,Renan Vieira Ernesto,10278282997,rua julio niccolodi 253,1
-Funcionario,null,renan,123456789,dsadas1,1
-Funcionario,null,raeasd,10278282997,dasdas,1
-=======
-Funcionario,null,a,dasdasda,dsdas,2
->>>>>>> branch 'master' of https://github.com/xandeisotton/imobiliaria.git
+Funcionario,null,dasdassa,10278282997,12,1

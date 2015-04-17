@@ -46,21 +46,21 @@ public class Funcionario extends Pessoa {
 		// telefone = scanner.next();
 		// } while (quantidadeNumeros.length() < 8);
 		// }
-		System.out
-				.println("Insira o tipo funcionario : 1 - Corretor / 2 - Secretario");
+		System.out.println("Insira o tipo funcionario : 1 - Corretor / 2 - Secretario");
 		u.setTipo(scanner.next());
-		// int opcao = scanner.nextInt();
-		// if (opcao == 1) {
-		// u.setTipo("Corretor");
-		// return;
-		// }
-		// if (opcao == 2) {
-		// u.setTipo("Secretario");
-		// return;
-		// } else {
-		// System.out.println("Opção inválida");
-		//
-		// }
+		/* int opcao = scanner.nextInt();
+		 if (opcao == 1) {
+		 u.setTipo("Corretor");
+		 return;
+		 }
+		 if (opcao == 2) {
+		 u.setTipo("Secretario");
+		 return;
+		 } else {
+		 System.out.println("Opção inválida");
+		
+		 }
+		*/ 
 
 		System.out.println("Insira o numero do CPF:(Somente números.)");
 		setCpf(scanner.next());

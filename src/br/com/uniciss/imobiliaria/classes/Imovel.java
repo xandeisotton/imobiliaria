@@ -151,7 +151,7 @@ public class Imovel {
 	}
 	public static void editandoImovel(){
 		Scanner ler=new Scanner(System.in);
-		String nome;
+		String nome = null;
 		String endereco;
 		String tamanhoImovel;
 		String numeroDeComodos;

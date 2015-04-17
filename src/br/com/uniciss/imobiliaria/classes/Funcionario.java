@@ -127,13 +127,11 @@ public class Funcionario extends Pessoa {
 	}
 
 
-	public String getCodigo() {
+	public String getString() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
+
 
 	public String getCodigo() {
 		return codigo;

@@ -114,13 +114,13 @@ public class Funcionario extends Pessoa {
 	}
 
 	public String toString() {
-		return "Funcionario," + codigo + "," + nome + "," + cpf + ","
+		return "Funcionario," + getCodigo() + "," + nome + "," + cpf + ","
 				+ endereco + "," + u.getTipo();
 	}
 
 	public String toStringUsuarios() {
 		return "Usuario," + "," + u.getLogin() + "," + u.getSenha() + ","
-				+ u.getTipo() + "," + codigo;
+				+ u.getTipo() + "," + getCodigo();
 	}
 
 	public boolean validaN(String txt) {
@@ -134,6 +134,14 @@ public class Funcionario extends Pessoa {
 
 	public boolean validaCpf(String vcpf) {
 		return vcpf.matches("^[0-9]*$");
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 }

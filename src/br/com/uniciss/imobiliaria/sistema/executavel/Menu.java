@@ -1,6 +1,7 @@
 package br.com.uniciss.imobiliaria.sistema.executavel;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -24,11 +25,12 @@ public class Menu {
 	
 	public void menuAdmin()throws IOException{
 		int opc;
-		System.out.println("ADMINISTRADOR");
-		
+		System.out.println("       ADMINISTRADOR");
+		System.out.println("------------------------");
 		System.out.println("1 - Cadastrar Secretária");
 		System.out.println("2 - Cadastrar Corretor");
 		System.out.println("3- Sair");
+		System.out.println("------------------------");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch(opc){
@@ -40,9 +42,9 @@ public class Menu {
 			break;
 		
 		case 3:		
-			System.out.println("Escolha:");
-			System.out.println("1-Sair do Sistema e fazer login novamente");
-			System.out.println("2-Apenas Encerrar");
+			System.out.println("Deseja voltar ao menu principal?");
+			System.out.println("1-Sim");
+			System.out.println("2-Não");
 			opc = s.nextInt();
 			switch(opc){
 			case 1:
@@ -63,13 +65,13 @@ public class Menu {
 	
 	public void menuCorretor() throws IOException{
 			int opc;
-			System.out.println("CORRETOR");
-			
+			System.out.println("           CORRETOR");
+			System.out.println("----------------------------");
 			System.out.println("1 - Cadastrar Imóvel Vendido");
 			System.out.println("2 - Cadastrar Imóvel Alugado");
 			System.out.println("3 - Listar Visitas Agendadas");
-			System.out.println("4 - Buscar Imóvel por código");
-			System.out.println("5 - Sair");
+			System.out.println("4- Sair");
+			System.out.println("----------------------------");
 			s = new Scanner(System.in);
 			opc = s.nextInt();
 			switch(opc){
@@ -83,13 +85,10 @@ public class Menu {
 			case 3:		
 				
 				break;
-			case 4:		
-				
-				break;
-			case 5:
-				System.out.println("Escolha:");
-				System.out.println("1-Sair do Sistema e fazer login novamente");
-				System.out.println("2-Apenas Encerrar");
+			case 4:
+				System.out.println("Deseja voltar ao menu principal?");
+				System.out.println("1-Sim");
+				System.out.println("2-Não");
 				opc = s.nextInt();
 				switch(opc){
 				case 1:
@@ -111,16 +110,16 @@ public class Menu {
 	
 	public void menuSecretario() throws IOException{
 		int opc;
-		System.out.println("Secretario");
-		
+		System.out.println("      Secretário");
+		System.out.println("----------------------");
 		System.out.println("1 - Cadastrar cliente");
 		System.out.println("2 - Cadastrar imóvel");
 		System.out.println("3 - Agendar visita");
 		System.out.println("4 - Listar visitas");
 		System.out.println("5 - Listar Clientes");
-		System.out.println("6 - Listar Imóveis");
-		System.out.println("7 - Buscar Imóveis pelo código");
-		System.out.println("8 - Sair");
+		System.out.println("6 - Listar visitas");
+		System.out.println("7 - Sair");
+		System.out.println("---------------------- ");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch(opc){
@@ -142,13 +141,10 @@ public class Menu {
 		case 6:		
 	
 			break;
-		case 7:		
-			
-			break;
-		case 8:
-			System.out.println("Escolha:");
-			System.out.println("1-Sair do Sistema e fazer login novamente");
-			System.out.println("2-Apenas Encerrar");
+		case 7:
+			System.out.println("Deseja voltar ao menu principal?");
+			System.out.println("1-Sim");
+			System.out.println("2-Não");
 			opc = s.nextInt();
 			switch(opc){
 			case 1:
@@ -206,6 +202,7 @@ public class Menu {
 		} catch(NullPointerException b){
 			
 			System.out.println("Erro!");
+			System.out.println(b.getMessage());
 		}
 	}
 

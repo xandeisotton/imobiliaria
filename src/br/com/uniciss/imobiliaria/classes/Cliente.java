@@ -2,13 +2,21 @@ package br.com.uniciss.imobiliaria.classes;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+
+
 //import br.com.uniciss.imobiliaria.classes.ValidaCpf;
 import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
 
-public abstract class Cliente extends Pessoa {
-
+public class Cliente extends Pessoa {
+	List<Object> listaPacientes = new ArrayList<Object>();
+	public static Map<String, Cliente> mapaDeClientes = new HashMap<String, Cliente>();
 	protected String banco;
 	protected String numConta;
 	protected String codigo;
@@ -45,6 +53,7 @@ public abstract class Cliente extends Pessoa {
 				+ telefone;
 	} 
 
+	@SuppressWarnings("resource")
 	public void CadastroCliente() throws Exception {
 		cadastro = new Scanner(System.in);
 
@@ -78,6 +87,11 @@ public abstract class Cliente extends Pessoa {
 		System.out.println("Informe o codigo do cliente!");
 		setCodigo(cadastro.nextLine());
 
+		//TESTE
+		//Cliente c = new Cliente(nome, cpf, endereco, telefone);
+		//ListaCliente.add(c);
+		//mapaDeClientes.put(c.getNome(), c);
+		
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());
 
@@ -101,8 +115,7 @@ public abstract class Cliente extends Pessoa {
 		} while ((cont != 1) || (cont != 2));
 	}
 
-	@SuppressWarnings("resource")
-	public void ListaCliente() throws Exception {
+	public void listaCliente() throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 				new FileInputStream("Cliente.txt")));
 		String linha = br.readLine();
@@ -123,7 +136,7 @@ public abstract class Cliente extends Pessoa {
 			break;
 
 		case 2:
-			ListaCliente();
+			listaCliente();
 			break;
 		default:
 			System.out.println("você informou uma opcao inválida!");
@@ -132,4 +145,75 @@ public abstract class Cliente extends Pessoa {
 		entrada.close();
 		br.close();
 	}
+	//esse é onde eu comecei com meu arquivo de pesquisa
+	//@SuppressWarnings("unused")
+	public void pesquisaCliente() throws Exception {
+		Scanner entrada = new Scanner(System.in);
+		boolean achou = false;
+		String linha = "";
+		@SuppressWarnings("unused")
+		String nomeArquivo = "Cliente.txt";
+		System.out.println("Informe o código do cliente");
+		String codigo = entrada.next();
+		BufferedReader in = new BufferedReader(new FileReader("Cliente.txt"));
+		try{
+			while((linha = in.readLine())!=null){
+				if(linha.contains(codigo)){
+					System.out.println(linha);
+					achou = true;
+				}
+			}
+			if(!achou){
+				System.out.println("Arquivo não existente!\n");
+				
+			}
+		}catch (NullPointerException erro) {
+		}
+		System.out.println("Qual ação deseja realizar?");
+		System.out.println("1 - Pesquisar");
+		System.out.println("2 - Retornar ao menu principal");
+		int cont = entrada.nextInt();
+		switch(cont){
+		case 1:
+			pesquisaCliente();
+			break;
+			
+		case 2:
+			Menu m = new Menu();
+			m.menuSecretario();
+		}
+		in.close();
+		entrada.close();
+	}
+	
+/*	ISSO É UM TESTE, FAVOR NAO APAGAR 
+ * 
+ * public static void preencheMapa() throws IOException {
+		Iterator<Cliente> i = listaCliente().iterator();
+
+		while (i.hasNext()) {
+			Cliente c = i.next();
+			mapaDeClientes.put(c.getNome(), c);
+		}
+	}
+	public static Cliente buscaPorNome(String nomeBusca) throws IOException {
+		preencheMapa();
+		Cliente c = mapaDeClientes.get(nomeBusca);
+		try {
+			String nome = c.getNome();
+			String cpf = c.getCpf();
+			String endereco = c.getEndereco();
+			String telefone = c.getTelefone();
+		
+
+			c = new Cliente(nome, cpf, endereco, telefone);
+			return c;
+			
+		} catch (NullPointerException n) {
+			n.getMessage();
+			return c;
+		}
+	}*/
+
+
 }

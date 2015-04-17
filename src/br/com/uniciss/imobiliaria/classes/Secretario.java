@@ -5,11 +5,6 @@ import java.util.Scanner;
 public class Secretario extends Funcionario {
 
 	private int cod;
-	
-	public String toString() {
-		return "Secretario," /* CODIGO AQUI */+ getNome() + "," + getEndereco()
-				+ "," + getCpf() + "," + getTelefone();
-	}
 
 	//
 	// METODO VALIDA TELEFONE
@@ -48,26 +43,38 @@ public class Secretario extends Funcionario {
 
 		System.out.println("Insira o numero do CPF:(EX:000.000.000-69)");
 		setCpf(insere.nextLine());
-		//
-		//
-		// validar CPF
-		//
-		//
+
 		System.out
 				.println("Insira o telefone do secretário:(EX:(00)0000-0000)");
 		String numeroTelefone = insere.nextLine();
 		while (!isTelefone(numeroTelefone)) {
-			System.out.println("Não entendi, repita o numero do telefone");
+			System.out.println("repita o numero do telefone");
 			numeroTelefone = insere.nextLine();
+
+			System.out.println("Insira o login do funcionario:");
+			u.setLogin(scanner.next());
+
+			System.out.println("Insira a senha do funcionario:");
+			u.setSenha(scanner.next());
 		}
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("  Sucesso! Seu cadastro esta completo.");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
-
+		System.out.println("1-> Voltar ao menu");
+		System.out.println("2-> Cadastrar outro funcionário");
+		System.out.println("3-> Log Off");
 		GravaTxt gravaArq = new GravaTxt();
 
-		gravaArq.grava("Secretario.txt", toString());
+	}
 
+	public String toString() {
+		return "Funcionario," + getCodigo() + "," + nome + "," + cpf + ","
+				+ endereco + "," + u.getTipo();
+	}
+
+	public String toStringUsuarios() {
+		return "Usuario," + "," + u.getLogin() + "," + u.getSenha() + ","
+				+ u.getTipo() + "," + getCodigo();
 	}
 
 	public void alterarSecretario() {

@@ -49,7 +49,7 @@ public class Corretor extends Funcionario{
 
 		System.out.println("Insira o numero do CPF:(Somente números.)");
 		setCpf(insere.nextLine());
-		
+		// VALIDA CPF
 		if (ValidaCpf.isCpf(getCpf())==false){	
 			System.out.println("CPF Invalido");
 		}

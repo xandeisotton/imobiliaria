@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import br.com.uniciss.imobiliaria.classes.Corretor;
+import br.com.uniciss.imobiliaria.classes.Imovel;
 import br.com.uniciss.imobiliaria.classes.LerBanco;
 import br.com.uniciss.imobiliaria.classes.Secretario;
 import br.com.uniciss.imobiliaria.classes.Usuario;
@@ -47,6 +48,7 @@ public class Menu {
 			break;
 
 		case 3:
+			//RETORNA AO MENU OU INTERROMPE O PROGRAMA
 			System.out.println("Deseja voltar ao menu principal?");
 			System.out.println("1-Sim");
 			System.out.println("2-Não");
@@ -120,7 +122,8 @@ public class Menu {
 		System.out.println("4 - Listar visitas");
 		System.out.println("5 - Listar Clientes");
 		System.out.println("6 - Listar visitas");
-		System.out.println("7 - Sair");
+		System.out.println("7 - Editar Imóvel");
+		System.out.println("8 - Sair");
 		System.out.println("---------------------- ");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
@@ -144,6 +147,10 @@ public class Menu {
 
 			break;
 		case 7:
+			Imovel imovel = new Imovel();
+			imovel.editandoImovel();
+			break;
+		case 8:
 			System.out.println("Deseja voltar ao menu principal?");
 			System.out.println("1-Sim");
 			System.out.println("2-Não");
@@ -163,13 +170,11 @@ public class Menu {
 			}
 		}
 	}
-
+	// Faz a chamada do metodo leituraUsuario
 	public void Login() throws IOException {
-		// Faz a chamada do metodo leituraUsuario
 		ib.leituraUsuario(mapaUsuario);
 		try {
-			BufferedReader entrada = new BufferedReader(new InputStreamReader(
-					System.in));
+			BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
 
 			System.out.println("Informe o Login:");
 			String usuario = entrada.readLine();

@@ -24,6 +24,7 @@ public class Imovel {
 	private int valorImovel;
 	private String tipo;
 	private String status;
+	private static Scanner ler;
 
 	public String getEndereco() {
 		return endereco;
@@ -125,9 +126,51 @@ public class Imovel {
 
 	}
 
-	public void alterarImovel() {
-		// não tive tempo
+	//falta testar
+		
+	public static void editarImovel() throws IOException{
+		
+		Scanner ler = new Scanner(System.in);
+		
+		System.out.println("Digite o codigo do Imovel");
+		int cod=ler.nextInt();
+		ler.nextLine();
+		
+		
 	}
+	public static void editandoImovel(){
+		Scanner ler=new Scanner(System.in);
+		String nome;
+		String endereco;
+		String tamanhoImovel;
+		String numeroDeComodos;
+		int valorImovel;
+		String tipo;
+		String status;
+		
+		
+		
+		System.out.println("Nome do proprietário");
+		
+		
+		Cliente cliente=new Cliente();
+				cliente.setNome(nome);
+			
+		
+		System.out.println("Endereço do Imóvel");
+		endereco = ler.nextLine();
+		
+	
+		System.out.println("Area do Imóvel");
+		tamanhoImovel = ler.nextLine();
+		
+		
+		System.out.println("Tipo de Imóvel");
+		tipo = ler.nextLine();
+		
+	}
+// não tive tempo
+	
 
 	// metodo pra deletar linha inteira 
 	

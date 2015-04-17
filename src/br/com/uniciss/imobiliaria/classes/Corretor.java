@@ -1,6 +1,7 @@
 package br.com.uniciss.imobiliaria.classes;
 
 import java.util.Scanner;
+import br.com.uniciss.imobiliaria.classes.ValidaCpf;
 
 public class Corretor extends Funcionario{
 	
@@ -46,13 +47,17 @@ public class Corretor extends Funcionario{
 		System.out.println("Insira o endereço:(EX:Rua tal, 49)");
 		setEndereco(insere.nextLine());
 
-		System.out.println("Insira o numero do CPF:(EX:000.000.000-69)");
+		System.out.println("Insira o numero do CPF:(Somente números.)");
 		setCpf(insere.nextLine());
-		//
-		//
-		// validar CPF
-		//
-		//
+		
+		if (ValidaCpf.isCpf(getCpf())==false){	
+			System.out.println("CPF Invalido");
+		}
+		while (ValidaCpf.isCpf(getCpf())== false){
+			System.out.println("Informe o número do CPF do cliente!");
+			setCpf(insere.nextLine());		
+		}
+
 		System.out.println("Insira o telefone do Corretor:(EX:(00)0000-0000)");
 		String numeroTelefone = insere.nextLine();
 		while (!isTelefone(numeroTelefone)) {

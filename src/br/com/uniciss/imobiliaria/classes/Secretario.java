@@ -59,7 +59,7 @@ public class Secretario extends Funcionario {
 		}
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("  Sucesso! Seu cadastro esta completo.");
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++");  
 		System.out.println("1-> Voltar ao menu");
 		System.out.println("2-> Cadastrar outro funcionário");
 		System.out.println("3-> Log Off");

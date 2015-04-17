@@ -1,7 +1,9 @@
 package br.com.uniciss.imobiliaria.classes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Imovel {
@@ -111,6 +113,13 @@ public class Imovel {
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("  Sucesso! Seu cadastro esta completo.");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+		
+		LerBanco ler = new LerBanco();
+		Map<Integer, Imovel> listaImovel = new HashMap<Integer, Imovel>();
+		List<Imovel>lImovel = new ArrayList<Imovel>();
+		
+		ler.leituraImovel(listaImovel, lImovel);
+		setCod(lImovel.size());
 		
 		GravaTxt gravaArq = new GravaTxt();
 		

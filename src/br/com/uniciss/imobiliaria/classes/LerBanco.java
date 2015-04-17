@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Map;
 
 public class LerBanco {
@@ -38,7 +39,8 @@ public class LerBanco {
 
 	}
 
-	public void leituraImovel(Map<Integer, Imovel> listaImovel) {
+	public void leituraImovel(Map<Integer, Imovel> listaImovel, List<Imovel>
+	lImovel) {
 		try {
 
 			FileReader arq = new FileReader("Imoveis.txt");
@@ -60,6 +62,7 @@ public class LerBanco {
 				p.setStatus(palavras[6]);
 
 				listaImovel.put(p.getCod(), p);
+				lImovel.add(p);
 				linha = lerArq.readLine();
 			}
 			arq.close();

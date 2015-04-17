@@ -43,7 +43,7 @@ public class Secretario extends Funcionario {
 
 		System.out.println("Insira o numero do CPF:(Somente números.)");
 		setCpf(insere.nextLine());
-		//         Valida CPF
+		//            Valida CPF
 		if (ValidaCpf.isCpf(getCpf())==false){	
 			System.out.println("CPF Invalido,tente novamente:");
 		}

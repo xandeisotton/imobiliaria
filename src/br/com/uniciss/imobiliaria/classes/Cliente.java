@@ -1,15 +1,18 @@
 package br.com.uniciss.imobiliaria.classes;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
 
 //import br.com.uniciss.imobiliaria.classes.ValidaCpf;
 import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
@@ -214,6 +217,25 @@ public class Cliente extends Pessoa {
 			return c;
 		}
 	}*/
-
+	public void alteraLinha(String palavraAntiga, String palavraNova) throws IOException{
+		String arquivo="ARQUIVO";
+		String arquivoTmp="ARQUIVO=Tmp";
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoTmp));
+		BufferedReader reader = new BufferedReader(new FileReader(arquivo));
+		
+		String linha;
+		while((linha=reader.readLine()) != null){
+			if(linha.contains(palavraAntiga)){
+				linha = linha.replace(palavraAntiga, palavraNova);
+			}
+			writer.write(linha + "\n");
+		}
+		writer.close();
+		reader.close();
+		
+		new File(arquivo).delete();
+		new File(arquivoTmp).renameTo(new File(arquivo));
+	}
 
 }

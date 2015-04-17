@@ -92,5 +92,71 @@ public class LerBanco {
 			System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
 		}
 	}
+	
+	
+	
+	public void leituraSecretario(Map<Integer, Secretario> listaSecretario) {
+		try {
+
+			FileReader arq = new FileReader("Secretario.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+
+			while (linha != null) {
+
+				String palavras[] = linha.split(",");
+				// Instanciacao de um novo usuario
+				Secretario p = new Secretario();
+
+				// Passa a ordem de cada campo
+				p.setNome(palavras[1]);
+				p.setEndereco(palavras[2]);
+				p.setCpf(palavras[3]);
+				p.setTelefone(palavras[4]);
+				
+				listaSecretario.put(p.getCod(), p);
+				linha = lerArq.readLine();
+			}
+			arq.close();
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.\n",
+					e.getMessage());
+		}
+
+	}
+	
+	
+	public void leituraCorretor(Map<Integer, Corretor> listaCorretor) {
+		try {
+
+			FileReader arq = new FileReader("Corretor.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+
+			while (linha != null) {
+
+				String palavras[] = linha.split(",");
+				// Instanciacao de um novo usuario
+				Corretor p = new Corretor();
+
+				// Passa a ordem de cada campo
+				p.setNome(palavras[1]);
+				p.setEndereco(palavras[2]);
+				p.setCpf(palavras[3]);
+				p.setTelefone(palavras[4]);
+				
+				listaCorretor.put(p.getCod(), p);
+				linha = lerArq.readLine();
+			}
+			arq.close();
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.\n",
+					e.getMessage());
+		}
+
+	}
+	
+	
+	
 
 }

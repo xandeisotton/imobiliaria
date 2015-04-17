@@ -9,19 +9,46 @@ public class Funcionario extends Pessoa {
 	private String codigo;
 	static Scanner scanner = new Scanner(System.in);
 
+	//
+	// METODO VALIDA NOME
+	//
+	public boolean validaNome(String str) {
+		return str.matches("[a-zA-Z ]+");
+	}
+
+	//
+	// METODO VALIDA TELEFONE
+	//
+	public boolean isTelefone(String numeroTelefone) {
+		return numeroTelefone
+				.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}")
+				|| numeroTelefone
+						.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");
+	}
+
 	Usuario u = new Usuario();
 
-	@SuppressWarnings({ "resource", "unchecked" })
+	@SuppressWarnings({ "resource" })
 	public void cadastroFuncionario() throws IOException {
 
-		System.out.println("Insira o nome do funcionario :");
-		setNome(scanner.nextLine());
+		System.out.println("Insira nome do Funcionario:(EX:pedro)");
+		String nome = scanner.nextLine();
 
-		System.out.println("Insira o endereço do funcionario :");
+		while (!validaNome(nome)) {
+			System.out.println("Apenas letras são válidas.");
+			nome = scanner.nextLine();
+		}
+
+		System.out.println("Insira o endereço:(EX:Rua tal, 49)");
 		setEndereco(scanner.nextLine());
 
-		System.out.println("Insira o telefone do funcionario :");
-		setTelefone(scanner.nextLine());
+		System.out
+				.println("Insira o telefone do Funcionário:(EX:(00)0000-0000)");
+		String numeroTelefone = scanner.nextLine();
+		while (!isTelefone(numeroTelefone)) {
+			System.out.println("Não entendi, repita o numero do telefone");
+			numeroTelefone = scanner.nextLine();
+		}
 
 		System.out
 				.println("Insira o tipo funcionario : 1 - Corretor / 2 - Secretario");
@@ -29,7 +56,9 @@ public class Funcionario extends Pessoa {
 
 		System.out.println("Insira o CPF :");
 		setCpf(scanner.nextLine());
-
+		//
+		// VALIDAR CPF
+		//
 		String quantidadeCpf;
 		String cpf;
 		int cont = 0;
@@ -44,6 +73,7 @@ public class Funcionario extends Pessoa {
 			cont++;
 		} while (quantidadeCpf.length() != 11);
 
+		@SuppressWarnings("unused")
 		boolean achou = false;
 		String linha = "";
 		BufferedReader in = new BufferedReader(

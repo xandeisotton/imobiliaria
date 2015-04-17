@@ -51,10 +51,10 @@ public class Corretor extends Funcionario{
 		setCpf(insere.nextLine());
 		// VALIDA CPF
 		if (ValidaCpf.isCpf(getCpf())==false){	
-			System.out.println("CPF Invalido");
+			System.out.println("CPF Invalido,tente novamente:");
 		}
 		while (ValidaCpf.isCpf(getCpf())== false){
-			System.out.println("Informe o número do CPF do cliente!");
+			System.out.println("Insira o numero do CPF:(Somente números.)");
 			setCpf(insere.nextLine());		
 		}
 

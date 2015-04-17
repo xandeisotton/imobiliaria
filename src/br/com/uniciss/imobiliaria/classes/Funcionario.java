@@ -62,23 +62,17 @@ public class Funcionario extends Pessoa {
 		//
 		// }
 
-		System.out.println("Insira o CPF :");
+		System.out.println("Insira o numero do CPF:(Somente números.)");
 		setCpf(scanner.next());
-		if (validaCpf(cpf) == false) {
-			do {
-				System.out.println("Cpf deve conter somente numeros");
-				cpf = scanner.next();
-			} while (validaCpf(cpf) == false);
+		
+		if (ValidaCpf.isCpf(getCpf())==false){	
+			System.out.println("CPF Invalido,tente novamente:");
+		}
+		while (ValidaCpf.isCpf(getCpf())== false){
+			System.out.println("Insira o numero do CPF:(Somente números.)");
+			setCpf(scanner.nextLine());		
 		}
 
-		String quantidadeCpf;
-		String cpf;
-
-		do {
-			System.out.println("cpf deve conter 11 digitos");
-			cpf = scanner.next();
-			quantidadeCpf = String.valueOf(cpf);
-		} while (quantidadeCpf.length() != 11);
 
 		boolean achou = false;
 		String linha = "";
@@ -132,9 +126,6 @@ public class Funcionario extends Pessoa {
 
 	}
 
-	public boolean validaCpf(String vcpf) {
-		return vcpf.matches("^[0-9]*$");
-	}
 
 	public String getCodigo() {
 		return codigo;

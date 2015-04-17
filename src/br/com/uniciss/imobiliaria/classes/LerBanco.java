@@ -1,8 +1,11 @@
 package br.com.uniciss.imobiliaria.classes;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 
 public class LerBanco {
@@ -19,7 +22,6 @@ public class LerBanco {
 				// Instanciacao de um novo usuario
 				Usuario p = new Usuario();
 
-				
 				// Passa a ordem de cada campo
 				p.setLogin(palavras[1]);
 				p.setSenha(palavras[2]);
@@ -67,29 +69,43 @@ public class LerBanco {
 		}
 
 	}
-	
-	public void leituraVisitas(Map<String, Agendamento> listaVisitas){
-		try{
+
+	public void leituraFuncionario() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(
+				new FileInputStream("Funcionario.txt")));
+
+		String linha = br.readLine();
+
+		while (linha != null) {
+			System.out.println(linha);
+			linha = br.readLine();
+		}
+
+	}
+
+	public void leituraVisitas(Map<String, Agendamento> listaVisitas) {
+		try {
 			FileReader arq = new FileReader("Visitas.txt");
 			BufferedReader lerArq = new BufferedReader(arq);
 			String linha = lerArq.readLine();
-			
-			while (linha != null){
+
+			while (linha != null) {
 				String palavras[] = linha.split(",");
-				
+
 				Agendamento a = new Agendamento();
-				
+
 				a.setNome(palavras[1]);
 				a.setData(palavras[2]);
 				a.setHorario(palavras[3]);
 				a.setObservações(palavras[4]);
-				
-				listaVisitas.put(a.getData()+""+a.getHorario(), a);
+
+				listaVisitas.put(a.getData() + "" + a.getHorario(), a);
 				linha = lerArq.readLine();
 			}
 			arq.close();
-		}catch (IOException e ){
-			System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.\n",
+					e.getMessage());
 		}
 	}
 

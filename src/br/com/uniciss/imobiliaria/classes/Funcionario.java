@@ -99,9 +99,7 @@ public class Funcionario extends Pessoa {
 
 		System.out.println("Insira a senha do funcionario:");
 		u.setSenha(scanner.next());
-		
-
-
+				
 		GravaTxt grava = new GravaTxt();
 		grava.grava("Funcionario.txt", toString());
 		grava.grava("Usuarios.txt", toStringUsuarios());

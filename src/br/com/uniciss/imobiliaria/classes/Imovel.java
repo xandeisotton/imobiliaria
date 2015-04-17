@@ -1,5 +1,12 @@
 package br.com.uniciss.imobiliaria.classes;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +26,7 @@ public class Imovel {
 	private int valorImovel;
 	private String tipo;
 	private String status;
-
+	private static Scanner ler;
 
 	public String getEndereco() {
 		return endereco;
@@ -76,6 +83,7 @@ public class Imovel {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
 	public boolean isAtivo() {
 		return true;
 	}
@@ -106,7 +114,7 @@ public class Imovel {
 
 		System.out.println("Insira o tipo de Imovel:(EX:casa,apartamento..)");
 		setTipo(insere.next());
-		
+
 		System.out.println("Insira o status do Imovel:(EX:vender,alugar)");
 		setStatus(insere.next());
 
@@ -121,19 +129,112 @@ public class Imovel {
 		ler.leituraImovel(listaImovel, lImovel);
 		setCod(lImovel.size());
 		
+
+
 		GravaTxt gravaArq = new GravaTxt();
-		
+
 		gravaArq.grava("Imoveis.txt", toString());
 
 	}
 
-	public void alterarImovel() {
-		// Estou codificando //fabio\\
+	//falta testar
+		
+	public static void editarImovel() throws IOException{
+		
+		Scanner ler = new Scanner(System.in);
+		
+		System.out.println("Digite o codigo do Imovel");
+		int cod=ler.nextInt();
+		ler.nextLine();
+		
+		
 	}
-	public void retirarImovel(){
-		// Estou codificando //fabio\\
+	public static void editandoImovel(){
+		Scanner ler=new Scanner(System.in);
+		String nome;
+		String endereco;
+		String tamanhoImovel;
+		String numeroDeComodos;
+		int valorImovel;
+		String tipo;
+		String status;
+		
+		
+		
+		System.out.println("Nome do proprietário");
+		
+		Cliente cliente=new Cliente();
+				cliente.setNome(nome);
+			
+		
+		System.out.println("Endereço do Imóvel");
+		endereco = ler.nextLine();
+		
+	
+		System.out.println("Area do Imóvel");
+		tamanhoImovel = ler.nextLine();
+		
+		
+		System.out.println("Tipo de Imóvel");
+		tipo = ler.nextLine();
+		
 	}
+// não tive tempo
+	
 
-
-
+	// metodo pra deletar linha inteira 
+	
+	//USAR ISSO NO MENU PRA CHAMAR 
+	
+//	Imovel ent= new Imovel();
+	
+//	@SuppressWarnings("resource")
+//	Scanner insere = new  Scanner(System.in);
+//	System.out.println("Informe o nome do Funcionário:");
+//	ent.setCod(insere.next());
+//	ent.delete("PASSAARQUIVO.txt",ent.toString());
+	
+	
+	public void delete(String arquivo, String removerLinhaPara) {
+		
+	    try {
+	      File lerArquivo = new File(arquivo);
+	      
+	      if (!lerArquivo.isFile()) {
+	        System.out.println("Esse arquivo não pode ser lido");
+	        return;
+	      }
+	      
+	      BufferedReader br = new BufferedReader(new FileReader(arquivo));
+	      
+	      List<String> linha = new ArrayList<String>();
+	      String aux = br.readLine();
+	      
+	      while (aux != null) {
+	        if (!aux.trim().equals(removerLinhaPara)) {
+	        	if(linha.contains(removerLinhaPara)){
+	            	linha.add(aux);
+	            	linha.add("\r\n");
+	        	}
+	        }
+	        aux = br.readLine();
+	      }
+	      
+	      FileWriter fw = new FileWriter(lerArquivo);
+	      BufferedWriter bw = new BufferedWriter(fw);
+	      for(String s : linha){
+	    	  bw.write(s);
+	    	  
+	      }
+	      bw.close();
+	      br.close();
+	      
+	    }
+	    catch (FileNotFoundException ex) {
+	      ex.printStackTrace();
+	    }
+	    catch (IOException ex) {
+	      System.out.println("Errooo aaaqui por causa que");
+	    }
+	}
 }

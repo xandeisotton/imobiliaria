@@ -2,12 +2,12 @@ package br.com.uniciss.imobiliaria.classes;
 
 import java.util.Scanner;
 
-public class Corretor extends Funcionario{
-	
+public class Secretario extends Funcionario {
+
 	private int cod;
 	
 	public String toString() {
-		return "Corretor," /* CODIGO AQUI */+ getNome() + "," + getEndereco()
+		return "Secretario," /* CODIGO AQUI */+ getNome() + "," + getEndereco()
 				+ "," + getCpf() + "," + getTelefone();
 	}
 
@@ -28,14 +28,14 @@ public class Corretor extends Funcionario{
 		return str.matches("[a-zA-Z ]+");
 	}
 
-	public void incluirCorretor() {
+	public void incluirSecretario() {
 		//
 		// Procedimento para cadastrar Secretario;
 		//
 		@SuppressWarnings("resource")
 		Scanner insere = new Scanner(System.in);
 
-		System.out.println("Insira nome do Corretor:(EX:pedro)");
+		System.out.println("Insira nome do secretário:(EX:pedro)");
 		String nome = insere.nextLine();
 
 		while (!validaNome(nome)) {
@@ -53,7 +53,8 @@ public class Corretor extends Funcionario{
 		// validar CPF
 		//
 		//
-		System.out.println("Insira o telefone do Corretor:(EX:(00)0000-0000)");
+		System.out
+				.println("Insira o telefone do secretário:(EX:(00)0000-0000)");
 		String numeroTelefone = insere.nextLine();
 		while (!isTelefone(numeroTelefone)) {
 			System.out.println("Não entendi, repita o numero do telefone");
@@ -65,7 +66,7 @@ public class Corretor extends Funcionario{
 
 		GravaTxt gravaArq = new GravaTxt();
 
-		gravaArq.grava("Corretor.txt", toString());
+		gravaArq.grava("Secretario.txt", toString());
 
 	}
 
@@ -84,4 +85,5 @@ public class Corretor extends Funcionario{
 	public void setCod(int cod) {
 		this.cod = cod;
 	}
+
 }

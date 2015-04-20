@@ -3,12 +3,15 @@ package br.com.uniciss.imobiliaria.sistema.executavel;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
+import br.com.uniciss.imobiliaria.classes.Agendamento;
+import br.com.uniciss.imobiliaria.classes.Cliente;
 import br.com.uniciss.imobiliaria.classes.Corretor;
 import br.com.uniciss.imobiliaria.classes.Funcionario;
 import br.com.uniciss.imobiliaria.classes.Imovel;
@@ -26,7 +29,7 @@ public class Menu {
 	Usuario u = new Usuario();
 	LerBanco ib = new LerBanco();
 
-	public void menuAdmin() throws IOException {
+	public void menuAdmin() throws Exception {
 		int opc;
 		System.out.println("       ADMINISTRADOR");
 		System.out.println("------------------------");
@@ -88,7 +91,7 @@ public class Menu {
 		}
 	}
 
-	public void menuCorretor() throws IOException {
+	public void menuCorretor() throws Exception {
 		int opc;
 		System.out.println("           CORRETOR");
 		System.out.println("----------------------------");
@@ -131,7 +134,7 @@ public class Menu {
 		}
 	}
 
-	public void menuSecretario() throws IOException {
+	public void menuSecretario() throws Exception {
 		int opc;
 		System.out.println("      Secretário");
 		System.out.println("----------------------");
@@ -148,12 +151,15 @@ public class Menu {
 		opc = s.nextInt();
 		switch (opc) {
 		case 1:
-
+			Cliente c = new Cliente();
+			c.CadastroCliente();
 			break;
 		case 2:
 
 			break;
 		case 3:
+			Agendamento a = new Agendamento();
+			a.agendarVisita();
 
 			break;
 		case 4:
@@ -190,7 +196,7 @@ public class Menu {
 		}
 	}
 	// Faz a chamada do metodo leituraUsuario
-	public void Login() throws IOException {
+	public void Login() throws Exception {
 		ib.leituraUsuario(mapaUsuario);
 		try {
 			BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));

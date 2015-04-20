@@ -31,7 +31,7 @@ public class Menu {
 		System.out.println("------------------------");
 		System.out.println("1 - Cadastrar Secretária");
 		System.out.println("2 - Cadastrar Corretor");
-		System.out.println("3- Sair");
+		System.out.println("3 - Sair");
 		System.out.println("------------------------");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
@@ -40,18 +40,55 @@ public class Menu {
 			// CHAMA CADASTRO SECRETARIO
 			Secretario novosecretario = new Secretario();
 			novosecretario.incluirSecretario();
+			
+			System.out.println("1 - Voltar ao menu");
+			System.out.println("2 - Cadastrar outro funcionário");
+			
+			int opi = s.nextInt();
+			s.nextLine();
+			
+			while(opi != 1 || opi != 2){
+				System.out.println("1 - Voltar ao menu");
+				System.out.println("2 - Cadastrar outro funcionário");
+			}
+			
+			if (opi == 1){
+				menuAdmin();
+			}else if (opi == 2){
+				novosecretario.incluirSecretario();
+			}
+			
 			break;
+			
 		case 2:
 			// CHAMA CADASTRO CORRETOR
 			Corretor novocorretor = new Corretor();
 			novocorretor.incluirCorretor();
+			
+			System.out.println("1 - Voltar ao menu");
+			System.out.println("2 - Cadastrar outro funcionário");
+			
+			int opic = s.nextInt();
+			s.nextLine();
+			
+			while(opic != 1 || opic != 2){
+				System.out.println("1 - Voltar ao menu");
+				System.out.println("2 - Cadastrar outro funcionário");
+			}
+			
+			if (opic == 1){
+				menuAdmin();
+			}else if (opic == 2){
+				novocorretor.incluirCorretor();
+			}
+			
 			break;
 
 		case 3:
 			//RETORNA AO MENU OU INTERROMPE O PROGRAMA
-			System.out.println("Deseja voltar ao menu principal?");
-			System.out.println("1-Sim");
-			System.out.println("2-Não");
+			System.out.println("Deseja fazer logoff?");
+			System.out.println("1 - Sim");
+			System.out.println("2 - Não");
 			opc = s.nextInt();
 			switch (opc) {
 			case 1:
@@ -65,7 +102,12 @@ public class Menu {
 
 			default:
 				System.out.println("Opção inválida.");
+				System.out.println("");
 			}
+		default:
+			System.out.println("Opção inválida.");
+			System.out.println("");
+			menuAdmin();
 		}
 	}
 

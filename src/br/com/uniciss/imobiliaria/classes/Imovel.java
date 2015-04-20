@@ -126,7 +126,7 @@ public class Imovel {
 		Map<Integer, Imovel> listaImovel = new HashMap<Integer, Imovel>();
 		List<Imovel>lImovel = new ArrayList<Imovel>();
 		
-		ler.leituraImovel(listaImovel, lImovel);
+		ler.leituraImovel(listaImovel);
 		setCod(lImovel.size());
 		
 
@@ -141,22 +141,36 @@ public class Imovel {
 		
 	public static void editarImovel() throws IOException{
 		
-		Scanner ler = new Scanner(System.in);
+		ler = new Scanner(System.in);
 		
 		System.out.println("Digite o codigo do Imovel");
-		int cod=ler.nextInt();
+		
+		@SuppressWarnings("unused")
+		int cod = ler.nextInt();
 		ler.nextLine();
 		
 		
 	}
-	public static void editandoImovel(){
-		Scanner ler=new Scanner(System.in);
+	public void editandoImovel(){
+		ler = new Scanner(System.in);
 		String nome = null;
+		
+		@SuppressWarnings("unused")
 		String endereco;
+		
+		@SuppressWarnings("unused")
 		String tamanhoImovel;
+		
+		@SuppressWarnings("unused")
 		String numeroDeComodos;
+		
+		@SuppressWarnings("unused")
 		int valorImovel;
+		
+		@SuppressWarnings("unused")
 		String tipo;
+		
+		@SuppressWarnings("unused")
 		String status;
 		
 		

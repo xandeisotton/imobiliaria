@@ -13,11 +13,19 @@ public class Agendamento {
 
 	ArrayList<Agendamento> listaVisitas = new ArrayList<Agendamento>();
 	Map<String, Agendamento> mapaVisitas = new HashMap<String, Agendamento>();
+	
+	ArrayList<Imovel> listaImovel = new ArrayList<Imovel>();
+	Map<Integer, Imovel> mapaImovel = new HashMap<Integer, Imovel>();
+	
+	ArrayList<Corretor> listaCorretor = new ArrayList<Corretor>();
+	Map<Integer, Corretor> mapaCorretor = new HashMap<Integer, Corretor>();
 
 	private String nome;
 	private String data;
 	private String horario;
 	private String observações;
+	private int imovel;
+	private int corretor;
 	private Scanner s;
 
 	public String getNome() {
@@ -52,14 +60,33 @@ public class Agendamento {
 		this.observações = observações;
 	}
 
-	@Override
-	public String toString() {
-		return "Visita," + nome + "," + data + "," + horario + ","
-				+ observações;
+	public int getImovel() {
+		return imovel;
 	}
 
-	public void agendarConsulta() throws java.text.ParseException {
+	public void setImovel(int imovel) {
+		this.imovel = imovel;
+	}
 
+	public int getCorretor() {
+		return corretor;
+	}
+
+	public void setCorretor(int corretor) {
+		this.corretor = corretor;
+	}
+
+	@Override
+	public String toString() {
+		return "Visita," + nome + "," + data + "," + horario + "," + imovel + "," + corretor + "," + observações;
+	}
+
+	public void agendarVisita() throws java.text.ParseException {
+
+		LerBanco ler = new LerBanco();
+		ler.leituraCorretor(mapaCorretor);
+		ler.leituraImovel(mapaImovel);
+		
 		s = new Scanner(System.in);
 
 		System.out.println("Informe o nome de quem deseja agendar a visita: ");
@@ -68,18 +95,73 @@ public class Agendamento {
 		verificaData();
 
 		verificaHoras();
-
+		
+		verificaImovel();
+		
+		verificaCorretor();
+		
 		System.out.println("Informações adicionais: ");
+		setObservações(s.nextLine());
+		
 		setObservações(s.nextLine());
 
 		GravaTxt g = new GravaTxt();
 		g.grava("Visitas.txt", toString());
 	}
 
+	private void verificaImovel() throws ParseException {
+		System.out.println("Informe o código do imóvel, onde será feita a visita: ");
+		int codigo = s.nextInt();
+		verificaTudo();
+		
+		if(mapaImovel.containsKey(codigo)){
+			setImovel(codigo);
+		}else{
+			System.out.println("Imóvel informado não existe");
+			verificaImovel();
+		}
+		
+		
+	}
+
+	private void verificaCorretor() throws ParseException {
+		System.out.println("Informe o código do corretor, que irá fazer a visita: ");
+		int codigo = s.nextInt();
+		verificaTudo();
+		
+		if(mapaCorretor.containsKey(codigo)){
+			setCorretor(codigo);
+		}else{
+			System.out.println("Corretor informado não existe");
+			verificaCorretor();
+		}
+		
+	}
+	
+	public boolean verificaTudo() throws ParseException{
+		
+		for (Agendamento a : listaVisitas) {
+			
+			if (a.getHorario().equals(getHorario()) && a.getData().equals(getData()) && a.getCorretor() == getCorretor()) {
+				System.out.println("Já há uma visita agendada para este Corretor, por favor informe outro Corretor!");
+				System.out.println("");
+				agendarVisita();
+			}
+			
+			if(a.getHorario().equals(getHorario()) && a.getData().equals(getData()) && a.getImovel() == getImovel()){
+				System.out.println("Já há uma visita agendada para este Imóvel, por favor informe outro Imóvel!");
+				System.out.println("");
+				agendarVisita();
+			}
+		}
+		
+		return true;
+	}
+
 	@SuppressWarnings("unused")
 	public boolean verificaData() {
 		LerBanco lb = new LerBanco();
-		lb.leituraVisitas(mapaVisitas);
+		
 
 		String data;
 
@@ -101,8 +183,7 @@ public class Agendamento {
 				setData(dataInformadaString);
 
 			} else if ((new Date()).getTime() >= dataInformada.getTime()) {
-				System.out
-						.println("Não é possivel marcar consultas para este dia, informe outra data!");
+				System.out.println("Não é possivel marcar consultas para este dia, informe outra data!");
 				System.out.println("");
 				verificaData();
 			}
@@ -118,9 +199,6 @@ public class Agendamento {
 
 	@SuppressWarnings("unused")
 	public boolean verificaHoras() {
-
-		LerBanco lb = new LerBanco();
-		lb.leituraVisitas(mapaVisitas);
 
 		s = new Scanner(System.in);
 		String hora;
@@ -145,26 +223,14 @@ public class Agendamento {
 			Date hora23 = formata.parse("23:59");
 			Date hora20 = formata.parse("20:00");
 
-			if (((hora11).getTime() < horaInformada.getTime())
-					&& ((hora13).getTime() > horaInformada.getTime())
-					|| ((hora7).getTime() > horaInformada.getTime() && (hora0)
-							.getTime() <= horaInformada.getTime())
-					|| (hora20).getTime() < horaInformada.getTime()
-					&& ((hora23).getTime() >= horaInformada.getTime())) {
-				System.out
-						.println("Não é possivel marcar consultas neste horário, informe outro horário!");
+			if (((hora11).getTime() < horaInformada.getTime()) && ((hora13).getTime() > horaInformada.getTime()) || ((hora7).getTime() > horaInformada.getTime() && (hora0).getTime() <= horaInformada.getTime()) || (hora20).getTime() < horaInformada.getTime() && ((hora23).getTime() >= horaInformada.getTime())) {
+				System.out.println("Não é possivel marcar consultas neste horário, informe outro horário!");
 				System.out.println("");
 				verificaHoras();
 			} else {
 				setHorario(horarioInformado);
 			}
-
-			if (mapaVisitas.containsKey(getData() + "" + getHorario())) {
-				System.out
-						.println("Já há uma visita agendada para este horário, por favor informe outro horario!");
-				System.out.println("");
-				verificaHoras();
-			}
+			
 
 		} catch (ParseException e) {
 			System.out.println("Você informou um horário inválido!");

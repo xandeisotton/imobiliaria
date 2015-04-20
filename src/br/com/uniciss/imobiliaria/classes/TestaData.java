@@ -5,6 +5,6 @@ import java.text.ParseException;
 public class TestaData {
 	public static void main(String[] args) throws ParseException {
 		Agendamento a = new Agendamento();
-		a.agendarConsulta();
+		a.agendarVisita();
 	}
 }

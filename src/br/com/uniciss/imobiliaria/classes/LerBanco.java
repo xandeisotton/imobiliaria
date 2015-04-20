@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
 
 public class LerBanco {
 	public void leituraUsuario(Map<String, Usuario> listaUsuario) {
@@ -79,12 +80,13 @@ public class LerBanco {
 				Imovel p = new Imovel();
 
 				// Passa a ordem de cada campo
-				p.setEndereco(palavras[1]);
-				p.setTamanhoImovel(palavras[2]);
-				p.setNumeroDeComodos(palavras[3]);
-				p.setValorImovel(Integer.parseInt(palavras[4]));
-				p.setTipo(palavras[5]);
-				p.setStatus(palavras[6]);
+				p.setCod(Integer.parseInt(palavras[1]));
+				p.setEndereco(palavras[2]);
+				p.setTamanhoImovel(palavras[3]);
+				p.setNumeroDeComodos(palavras[4]);
+				p.setValorImovel(Integer.parseInt(palavras[5]));
+				p.setTipo(palavras[6]);
+				p.setStatus(palavras[7]);
 
 				listaImovel.put(p.getCod(), p);
 				linha = lerArq.readLine();
@@ -104,6 +106,7 @@ public class LerBanco {
 			String linha = lerArq.readLine();
 
 			while (linha != null) {
+
 				String palavras[] = linha.split(",");
 
 				Agendamento a = new Agendamento();
@@ -112,8 +115,47 @@ public class LerBanco {
 				a.setData(palavras[2]);
 				a.setHorario(palavras[3]);
 				a.setObservações(palavras[4]);
+				a.setCorretor(Integer.parseInt(palavras[5]));
+				a.setImovel(Integer.parseInt(palavras[6]));
+				
+				//listaVisitas.put(contador++, a);
+				
+				Set<String> lista = listaVisitas.keySet();
+				for (String key : lista) {
+					Agendamento agendamento = listaVisitas.get(key);
+					agendamento.getCorretor();
+					
+				}
+				linha = lerArq.readLine();
+			}
+			arq.close();
+		}catch (IOException e ){
+			System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
+		}
+	}
+	
+	
+	
+	public void leituraSecretario(Map<Integer, Secretario> listaSecretario) {
+		try {
 
-				listaVisitas.put(a.getData() + "" + a.getHorario(), a);
+			FileReader arq = new FileReader("Funcionario.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+
+			while (linha != null) {
+
+				String palavras[] = linha.split(",");
+				// Instanciacao de um novo usuario
+				Secretario p = new Secretario();
+
+				// Passa a ordem de cada campo
+				p.setNome(palavras[1]);
+				p.setEndereco(palavras[2]);
+				p.setCpf(palavras[3]);
+				p.setTelefone(palavras[4]);
+				
+				listaSecretario.put(p.getCod(), p);
 				linha = lerArq.readLine();
 			}
 			arq.close();
@@ -122,5 +164,36 @@ public class LerBanco {
 					e.getMessage());
 		}
 	}
+	
+	
+	public void leituraCorretor(Map<Integer, Corretor> listaCorretor) {
+		try {
 
+			FileReader arq = new FileReader("Funcionario.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+
+			while (linha != null) {
+
+				String palavras[] = linha.split(",");
+				// Instanciacao de um novo usuario
+				Corretor p = new Corretor();
+
+				// Passa a ordem de cada campo
+				p.setCod(Integer.parseInt(palavras[1]));
+				p.setNome(palavras[2]);
+				p.setEndereco(palavras[3]);
+				p.setCpf(palavras[4]);
+				p.setTelefone(palavras[5]);
+				
+				listaCorretor.put(p.getCod(), p);
+				linha = lerArq.readLine();
+			}
+			arq.close();
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.\n",
+					e.getMessage());
+		}
+
+	}
 }

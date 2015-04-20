@@ -11,14 +11,14 @@ public class Vendas {
 		@SuppressWarnings("resource")
 		Scanner s = new Scanner(System.in);
 
-		System.out.println("Informe o código do imóvel");
+		System.out.println("Informe o código do imóvel:");
 		setCod(s.nextInt());
 		// validação do cód
 
-		System.out.println("Infome o valor da venda");
+		System.out.println("Infome o valor da venda:");
 		setValor(s.nextDouble());
 
-		System.out.println("Infome o código do comprador");
+		System.out.println("Infome o código do cliente:");
 		setCod(s.nextInt());
 		// validação do cód
 	}

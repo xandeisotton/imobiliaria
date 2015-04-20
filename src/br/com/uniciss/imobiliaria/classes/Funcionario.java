@@ -37,15 +37,15 @@ public class Funcionario extends Pessoa {
 				telefone = scanner.next();
 			} while (validaN(telefone) == false);
 		}
-
-		String quantidadeNumeros = String.valueOf(telefone);
-
-		if (quantidadeNumeros.length() < 8) {
-			do {
-				System.out.println("Telefone deve conter no mínimo 8 digitos");
-				telefone = scanner.next();
-			} while (quantidadeNumeros.length() < 8);
-		}
+//
+//		String quantidadeNumeros = String.valueOf(telefone);
+//
+//		if (quantidadeNumeros.length() < 8) {
+//			do {
+//				System.out.println("Telefone deve conter no mínimo 8 digitos");
+//				telefone = scanner.next();
+//			} while (quantidadeNumeros.length() < 8);
+//		}
 
 		System.out
 				.println("Insira o tipo funcionario : 1 - Corretor / 2 - Secretario");

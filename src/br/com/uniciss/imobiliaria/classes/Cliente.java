@@ -83,8 +83,7 @@ public class Cliente extends Pessoa {
 		System.out.println("Informe o numero da conta do cliente!");
 		setNumConta(cadastro.nextLine());
 
-		System.out.println("Informe o codigo do cliente!");
-		setCodigo(cadastro.nextLine());
+	
 		
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());

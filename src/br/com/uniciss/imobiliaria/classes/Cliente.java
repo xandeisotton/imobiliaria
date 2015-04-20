@@ -1,29 +1,26 @@
 package br.com.uniciss.imobiliaria.classes;
 
 import java.io.BufferedReader;
-
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import br.com.uniciss.imobiliaria.classes.ValidaCpf;
-import br.com.uniciss.imobiliaria.sistema.executavel.Menu;
 
 public class Cliente extends Pessoa {
-	List<Object> listaPacientes = new ArrayList<Object>();
+	List<Object> listaCliente = new ArrayList<Object>();
 	public static Map<String, Cliente> mapaDeClientes = new HashMap<String, Cliente>();
 	protected String banco;
 	protected String numConta;
 	protected String codigo;
 	private Scanner cadastro;
+	private Scanner entrada;
+	private BufferedReader in;
 
 	public String getBanco() {
 		return banco;
@@ -56,7 +53,6 @@ public class Cliente extends Pessoa {
 				+ telefone;
 	} 
 
-	@SuppressWarnings("resource")
 	public void CadastroCliente() throws Exception {
 		cadastro = new Scanner(System.in);
 
@@ -89,76 +85,26 @@ public class Cliente extends Pessoa {
 
 		System.out.println("Informe o codigo do cliente!");
 		setCodigo(cadastro.nextLine());
-
-		//TESTE
-		//Cliente c = new Cliente(nome, cpf, endereco, telefone);
-		//ListaCliente.add(c);
-		//mapaDeClientes.put(c.getNome(), c);
 		
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());
 
-		Scanner entrada = new Scanner(System.in);
-		System.out.println("O que deseja fazer?\n 1-Cadastrar novamente. \n 2-Voltar ao Menu.");
-		int cont = entrada.nextInt();
-		do {
-			switch (cont) {
-
-			case 1:
-				CadastroCliente();
-				break;
-
-			case 2:
-				Menu m = new Menu();
-				m.Login();
-				break;
-			default:
-				System.out.println("Você informou uma opção inválida!");
-			}
-		} while ((cont != 1) || (cont != 2));
+		entrada = new Scanner(System.in);
 	}
-
-	public void listaCliente() throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(
-				new FileInputStream("Cliente.txt")));
-		String linha = br.readLine();
-
-		while (linha != null) {
-			System.out.println(linha);
-			linha = br.readLine();
-		}
-		Scanner entrada = new Scanner(System.in);
-		System.out.println("O que deseja fazer?\n 1-Voltar ao Menu. \n 2-Listar Novamente.");
-		int cont = entrada.nextInt();
-		do{
-		switch (cont) {
-
-		case 1:
-			Menu m = new Menu();
-			m.Login();
-			break;
-
-		case 2:
-			listaCliente();
-			break;
-		default:
-			System.out.println("você informou uma opcao inválida!");
-		}
-		}while((cont != 1)||(cont != 2));
-		entrada.close();
-		br.close();
-	}
-	//esse é onde eu comecei com meu arquivo de pesquisa
-	//@SuppressWarnings("unused")
+	
 	public void pesquisaCliente() throws Exception {
-		Scanner entrada = new Scanner(System.in);
+		
+		entrada = new Scanner(System.in);
 		boolean achou = false;
 		String linha = "";
 		@SuppressWarnings("unused")
-		String nomeArquivo = "Cliente.txt";
+		String nomeArquivo = "Clientes.txt";
+		
 		System.out.println("Informe o código do cliente");
 		String codigo = entrada.next();
-		BufferedReader in = new BufferedReader(new FileReader("Cliente.txt"));
+		
+		in = new BufferedReader(new FileReader("Cliente.txt"));
+		
 		try{
 			while((linha = in.readLine())!=null){
 				if(linha.contains(codigo)){
@@ -167,26 +113,11 @@ public class Cliente extends Pessoa {
 				}
 			}
 			if(!achou){
-				System.out.println("Arquivo não existente!\n");
-				
+				System.out.println("Cliente não existente!\n");
 			}
 		}catch (NullPointerException erro) {
+			System.out.println("Código inválido!");
 		}
-		System.out.println("Qual ação deseja realizar?");
-		System.out.println("1 - Pesquisar");
-		System.out.println("2 - Retornar ao menu principal");
-		int cont = entrada.nextInt();
-		switch(cont){
-		case 1:
-			pesquisaCliente();
-			break;
-			
-		case 2:
-			Menu m = new Menu();
-			m.menuSecretario();
-		}
-		in.close();
-		entrada.close();
 	}
 	
 /*	ISSO É UM TESTE, FAVOR NAO APAGAR 
@@ -217,9 +148,11 @@ public class Cliente extends Pessoa {
 			return c;
 		}
 	}*/
+	
 	public void alteraLinha(String palavraAntiga, String palavraNova) throws IOException{
-		String arquivo="ARQUIVO";
-		String arquivoTmp="ARQUIVO=Tmp";
+		
+		String arquivo = "ARQUIVO";
+		String arquivoTmp = "ARQUIVO=Tmp";
 		
 		BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoTmp));
 		BufferedReader reader = new BufferedReader(new FileReader(arquivo));
@@ -236,6 +169,12 @@ public class Cliente extends Pessoa {
 		
 		new File(arquivo).delete();
 		new File(arquivoTmp).renameTo(new File(arquivo));
+	}
+	
+	public void exibirClientes(){
+		for(Object a : listaCliente){
+			System.out.println(a.toString());
+		}
 	}
 
 }

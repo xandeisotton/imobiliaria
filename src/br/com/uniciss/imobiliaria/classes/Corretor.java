@@ -39,7 +39,7 @@ public class Corretor extends Funcionario{
 		@SuppressWarnings("resource")
 		Scanner insere = new Scanner(System.in);
 
-		System.out.println("Insira nome do Corretor:(EX:pedro)");
+		System.out.println("Insira nome do Corretor: ");
 		setNome(insere.nextLine());
 
 		while (!validaNome(nome)) {
@@ -47,10 +47,10 @@ public class Corretor extends Funcionario{
 			nome = insere.nextLine();
 		}
 
-		System.out.println("Insira o endereço:(EX:Rua tal, 49)");
+		System.out.println("Insira o endereço: ");
 		setEndereco(insere.nextLine());
 
-		System.out.println("Insira o numero do CPF:(Somente números.)");
+		System.out.println("Insira o numero do CPF(apenas números): ");
 		setCpf(insere.nextLine());
 		
 		// VALIDA CPF
@@ -62,10 +62,10 @@ public class Corretor extends Funcionario{
 			setCpf(insere.nextLine());		
 		}
 
-		System.out.println("Insira o telefone do Corretor:(EX:(00)0000-0000)");
+		System.out.println("Insira o telefone do Corretor: ");
 		String numeroTelefone = insere.nextLine();
 		while (!isTelefone(numeroTelefone)) {
-			System.out.println("Não entendi, repita o numero do telefone");
+			System.out.println("Inválido, tente novemente.");
 			numeroTelefone = insere.nextLine();
 		}
 		

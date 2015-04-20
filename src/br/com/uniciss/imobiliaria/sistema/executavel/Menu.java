@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import br.com.uniciss.imobiliaria.classes.Agendamento;
+import br.com.uniciss.imobiliaria.classes.Alugar;
 import br.com.uniciss.imobiliaria.classes.Cliente;
 import br.com.uniciss.imobiliaria.classes.Corretor;
 import br.com.uniciss.imobiliaria.classes.Funcionario;
@@ -18,6 +19,7 @@ import br.com.uniciss.imobiliaria.classes.Imovel;
 import br.com.uniciss.imobiliaria.classes.LerBanco;
 import br.com.uniciss.imobiliaria.classes.Secretario;
 import br.com.uniciss.imobiliaria.classes.Usuario;
+import br.com.uniciss.imobiliaria.classes.Vendas;
 
 public class Menu {
 
@@ -97,23 +99,22 @@ public class Menu {
 		System.out.println("----------------------------");
 		System.out.println("1 - Cadastrar Imóvel Vendido");
 		System.out.println("2 - Cadastrar Imóvel Alugado");
-		System.out.println("3 - Listar Visitas Agendadas");
-		System.out.println("4- Sair");
+		System.out.println("3- Sair");
 		System.out.println("----------------------------");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch (opc) {
 		case 1:
-
+			Vendas v = new Vendas();
+			v.vender();
+			
 			break;
 		case 2:
-
+			Alugar a = new Alugar();
+			a.alugar();
 			break;
 
 		case 3:
-
-			break;
-		case 4:
 			System.out.println("Deseja voltar ao menu principal?");
 			System.out.println("1-Sim");
 			System.out.println("2-Não");
@@ -141,9 +142,8 @@ public class Menu {
 		System.out.println("1 - Cadastrar cliente");
 		System.out.println("2 - Cadastrar imóvel");
 		System.out.println("3 - Agendar visita");
-		System.out.println("4 - Listar visitas");
 		System.out.println("5 - Listar Clientes");
-		System.out.println("6 - Listar visitas");
+		System.out.println("6 - Procurar Cliente por código");
 		System.out.println("7 - Editar Imóvel");
 		System.out.println("8 - Sair");
 		System.out.println("---------------------- ");
@@ -155,6 +155,8 @@ public class Menu {
 			c.CadastroCliente();
 			break;
 		case 2:
+			Imovel i = new Imovel();
+			i.incluirImovel();
 
 			break;
 		case 3:
@@ -166,10 +168,13 @@ public class Menu {
 
 			break;
 		case 5:
-
+	Cliente ca = new Cliente();
+	ca.exibirClientes();
 			break;
 		case 6:
+			Cliente ab = new Cliente();
 
+			ab.pesquisaCliente();
 			break;
 		case 7:
 			Imovel imovel = new Imovel();

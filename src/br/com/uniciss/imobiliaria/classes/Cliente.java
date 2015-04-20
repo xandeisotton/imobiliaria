@@ -98,7 +98,7 @@ public class Cliente extends Pessoa {
 		g.grava("Cliente.txt", toString());
 
 		entrada = new Scanner(System.in); 
-	}
+	}   
 
 	public void pesquisaCliente() throws Exception {
 

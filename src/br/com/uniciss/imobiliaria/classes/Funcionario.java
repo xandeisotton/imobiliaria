@@ -100,11 +100,13 @@ public class Funcionario extends Pessoa {
 		grava.grava("Funcionario.txt", toString());
 		grava.grava("Usuarios.txt", toStringUsuarios());
 
-		System.out.println("cadastrado com sucesso");
 		List<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
 		LerBanco lbanco = new LerBanco();
 		lbanco.leituraFuncionario();
 		setCodigo(listaFuncionario.size());
+		
+		System.out.println("cadastrado com sucesso");
+		
 
 	}
 

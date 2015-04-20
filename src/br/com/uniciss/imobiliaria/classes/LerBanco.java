@@ -35,11 +35,46 @@ public class LerBanco {
 		}
 
 	}
+	public void leituraCliente() throws IOException {
+		try {
+
+			FileReader arq = new FileReader("Cliente.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
+
+			while (linha != null) {
+
+				String palavras[] = linha.split(",");
+				// Instanciacao de um novo usuario
+				Corretor p = new Corretor();
+
+				// Passa a ordem de cada campo
+				p.setCodigo(Integer.parseInt(palavras[1]));
+				p.setNome(palavras[2]);
+				p.setEndereco(palavras[3]);
+				p.setCpf(palavras[4]);
+				p.setTelefone(palavras[5]);
+
+				// listaCorretor.put(p.getCod(), p);
+				linha = lerArq.readLine();
+			}
+			arq.close();
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.\n",
+					e.getMessage());
+
+		}
+	}
+	
+	
+	
+	
+	
 
 	public void leituraFuncionario() throws IOException {
 		try {
 
-			FileReader arq = new FileReader("Corretor.txt");
+			FileReader arq = new FileReader("Funcionario.txt");
 			BufferedReader lerArq = new BufferedReader(arq);
 			String linha = lerArq.readLine();
 

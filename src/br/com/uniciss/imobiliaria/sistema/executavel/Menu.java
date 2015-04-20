@@ -1,9 +1,7 @@
 package br.com.uniciss.imobiliaria.sistema.executavel;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.InputMismatchException;
@@ -12,11 +10,9 @@ import java.util.Scanner;
 
 import br.com.uniciss.imobiliaria.classes.Agendamento;
 import br.com.uniciss.imobiliaria.classes.Cliente;
-import br.com.uniciss.imobiliaria.classes.Corretor;
 import br.com.uniciss.imobiliaria.classes.Funcionario;
 import br.com.uniciss.imobiliaria.classes.Imovel;
 import br.com.uniciss.imobiliaria.classes.LerBanco;
-import br.com.uniciss.imobiliaria.classes.Secretario;
 import br.com.uniciss.imobiliaria.classes.Usuario;
 
 public class Menu {

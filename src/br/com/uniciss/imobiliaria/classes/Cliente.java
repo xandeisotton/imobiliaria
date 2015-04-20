@@ -99,7 +99,7 @@ public class Cliente extends Pessoa {
 
 		List<Cliente> listaclientes = new ArrayList<Cliente>();
 		LerBanco lbanco = new LerBanco();
-		lbanco.leituraFuncionario();
+		lbanco.leituraCliente();
 		setCodigo(listaclientes.size());
 
 		entrada = new Scanner(System.in);

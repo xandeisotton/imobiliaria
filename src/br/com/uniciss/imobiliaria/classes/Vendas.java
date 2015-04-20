@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Vendas {
 	private int cod;
 	private double valor;
+	private int codCli;
 	
 	public void vender() {
 		@SuppressWarnings("resource")
@@ -15,7 +16,7 @@ public class Vendas {
 		setCod(s.nextInt());
 		
 		System.out.println("Infome o código do cliente que esta adquirindo:");
-		setCod(s.nextInt());
+		setCodCli(s.nextInt());
 		// validação do cód
 		
 		System.out.println("Infome o valor da venda:");
@@ -33,10 +34,13 @@ public class Vendas {
 	
 	}
 
+
 	@Override
 	public String toString() {
-		return "Vendas [cod=" + cod + ", valor=" + valor + "]";
+		return "Vendas [cod=" + cod + ", valor=" + valor + ", codCli=" + codCli
+				+ "]";
 	}
+
 
 	public int getCod() {
 		return cod;
@@ -52,6 +56,14 @@ public class Vendas {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public int getCodCli() {
+		return codCli;
+	}
+
+	public void setCodCli(int codCli) {
+		this.codCli = codCli;
 	}
 }
 /*System.out.println("Informe o nome do Paciente");

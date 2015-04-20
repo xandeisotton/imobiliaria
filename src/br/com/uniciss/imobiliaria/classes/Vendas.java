@@ -21,6 +21,10 @@ public class Vendas {
 		System.out.println("Infome o valor da venda:");
 		setValor(s.nextDouble());
 		
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("  Sucesso! Seu cadastro esta completo.");
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+		
 		GravaTxt gravaArq = new GravaTxt();
 
 		gravaArq.grava("Vendas.txt", toString());

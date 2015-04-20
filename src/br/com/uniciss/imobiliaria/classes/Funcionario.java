@@ -111,13 +111,13 @@ public class Funcionario extends Pessoa {
 	}
 
 	public String toString() {
-		return "Funcionario," + getCodigo() + "," + nome + "," + cpf + ","
+		return "Funcionario," + codigo + "," + nome + "," + cpf + ","
 				+ endereco + "," + u.getTipo();
 	}
 
 	public String toStringUsuarios() {
 		return "Usuario," + "," + u.getLogin() + "," + u.getSenha() + ","
-				+ u.getTipo() + "," + getCodigo();
+				+ u.getTipo() + "," + codigo;
 	}
 
 	public boolean validaN(String txt) {

@@ -1,3 +1,5 @@
 Usuario,admin,admin,0
 Usuario,corretor,corretor,1
 Usuario,secretario,123,2
+Usuario,,xandao,123,null,0
+Usuario,,xandao1,156,null,0

@@ -17,7 +17,7 @@ public class Cliente extends Pessoa {
 	public static Map<String, Cliente> mapaDeClientes = new HashMap<String, Cliente>();
 	protected String banco;
 	protected String numConta;
-	protected String codigo;
+	protected int codigo;
 	private Scanner cadastro;
 	private Scanner entrada;
 	private BufferedReader in;
@@ -38,12 +38,12 @@ public class Cliente extends Pessoa {
 		this.numConta = numConta;
 	}
 
-	public String getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigo(int i) {
+		this.codigo = i;
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class Cliente extends Pessoa {
 		return "Cliente," + banco + "," + numConta + "," + codigo + ","
 				+ cadastro + "," + nome + "," + endereco + "," + cpf + ","
 				+ telefone;
-	} 
+	}
 
 	public void CadastroCliente() throws Exception {
 		cadastro = new Scanner(System.in);
@@ -64,15 +64,14 @@ public class Cliente extends Pessoa {
 
 		System.out.println("Informe o número do CPF do cliente!");
 		setCpf(cadastro.nextLine());
-		//        Validação DE CPF:
-		if (ValidaCpf.isCpf(getCpf())==false){	
+		// Validação DE CPF:
+		if (ValidaCpf.isCpf(getCpf()) == false) {
 			System.out.println("CPF Invalido");
 		}
-		while (ValidaCpf.isCpf(getCpf())== false){
+		while (ValidaCpf.isCpf(getCpf()) == false) {
 			System.out.println("Informe o número do CPF do cliente!");
-			setCpf(cadastro.nextLine());				
-		 }
-		
+			setCpf(cadastro.nextLine());
+		}
 
 		System.out.println("Informe o número do telefone do ciente!");
 		setTelefone(cadastro.nextLine());
@@ -83,95 +82,89 @@ public class Cliente extends Pessoa {
 		System.out.println("Informe o numero da conta do cliente!");
 		setNumConta(cadastro.nextLine());
 
-	
-		
+		List<Funcionario> listaClientes = new ArrayList<Funcionario>();
+		LerBanco lbanco = new LerBanco();
+		lbanco.leituraFuncionario(listaClientes);
+		setCodigo(listaClientes.size());
+
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());
 
 		entrada = new Scanner(System.in);
 	}
-	
+
 	public void pesquisaCliente() throws Exception {
-		
+
 		entrada = new Scanner(System.in);
 		boolean achou = false;
 		String linha = "";
 		@SuppressWarnings("unused")
-		String nomeArquivo = "Clientes.txt";
-		
+		String nomeArquivo = "Cliente.txt";
+
 		System.out.println("Informe o código do cliente");
 		String codigo = entrada.next();
-		
+
 		in = new BufferedReader(new FileReader("Cliente.txt"));
-		
-		try{
-			while((linha = in.readLine())!=null){
-				if(linha.contains(codigo)){
+
+		try {
+			while ((linha = in.readLine()) != null) {
+				if (linha.contains(codigo)) {
 					System.out.println(linha);
 					achou = true;
 				}
 			}
-			if(!achou){
+			if (!achou) {
 				System.out.println("Cliente não existente!\n");
 			}
-		}catch (NullPointerException erro) {
+		} catch (NullPointerException erro) {
 			System.out.println("Código inválido!");
 		}
 	}
-	
-/*	ISSO É UM TESTE, FAVOR NAO APAGAR 
- * 
- * public static void preencheMapa() throws IOException {
-		Iterator<Cliente> i = listaCliente().iterator();
 
-		while (i.hasNext()) {
-			Cliente c = i.next();
-			mapaDeClientes.put(c.getNome(), c);
-		}
-	}
-	public static Cliente buscaPorNome(String nomeBusca) throws IOException {
-		preencheMapa();
-		Cliente c = mapaDeClientes.get(nomeBusca);
-		try {
-			String nome = c.getNome();
-			String cpf = c.getCpf();
-			String endereco = c.getEndereco();
-			String telefone = c.getTelefone();
-		
+	/*
+	 * ISSO É UM TESTE, FAVOR NAO APAGAR
+	 * 
+	 * public static void preencheMapa() throws IOException { Iterator<Cliente>
+	 * i = listaCliente().iterator();
+	 * 
+	 * while (i.hasNext()) { Cliente c = i.next();
+	 * mapaDeClientes.put(c.getNome(), c); } } public static Cliente
+	 * buscaPorNome(String nomeBusca) throws IOException { preencheMapa();
+	 * Cliente c = mapaDeClientes.get(nomeBusca); try { String nome =
+	 * c.getNome(); String cpf = c.getCpf(); String endereco = c.getEndereco();
+	 * String telefone = c.getTelefone();
+	 * 
+	 * 
+	 * c = new Cliente(nome, cpf, endereco, telefone); return c;
+	 * 
+	 * } catch (NullPointerException n) { n.getMessage(); return c; } }
+	 */
 
-			c = new Cliente(nome, cpf, endereco, telefone);
-			return c;
-			
-		} catch (NullPointerException n) {
-			n.getMessage();
-			return c;
-		}
-	}*/
-	
-	public void alteraLinha(String palavraAntiga, String palavraNova) throws IOException{
-		
+	public void alteraLinha(String palavraAntiga, String palavraNova)
+			throws IOException {
+
 		String arquivo = "ARQUIVO";
 		String arquivoTmp = "ARQUIVO=Tmp";
-		
+
 		BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoTmp));
 		BufferedReader reader = new BufferedReader(new FileReader(arquivo));
-		
+
 		String linha;
-		while((linha=reader.readLine()) != null){
-			if(linha.contains(palavraAntiga)){
+		while ((linha = reader.readLine()) != null) {
+			if (linha.contains(palavraAntiga)) {
 				linha = linha.replace(palavraAntiga, palavraNova);
 			}
 			writer.write(linha + "\n");
 		}
 		writer.close();
 		reader.close();
-		
+
 		new File(arquivo).delete();
 		new File(arquivoTmp).renameTo(new File(arquivo));
 	}
-	
-	public void exibirClientes(){
-		for(Object a : listaCliente){
+
+	public void exibirClientes() {
+		for (Object a : listaCliente) {
 			System.out.println(a.toString());
 		}
 	}

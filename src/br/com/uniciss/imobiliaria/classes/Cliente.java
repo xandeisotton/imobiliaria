@@ -106,7 +106,7 @@ public class Cliente extends Pessoa {
 		boolean achou = false;
 		String linha = "";
 		@SuppressWarnings("unused")
-		String nomeArquivo = "Clientes.txt";
+		String nomeArquivo = "Cliente.txt";
 
 		System.out.println("Informe o código do cliente");
 		String codigo = entrada.next();

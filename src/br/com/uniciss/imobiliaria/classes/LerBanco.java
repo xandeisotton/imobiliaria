@@ -50,10 +50,11 @@ public class LerBanco {
 				Corretor p = new Corretor();
 
 				// Passa a ordem de cada campo
-				p.setNome(palavras[1]);
-				p.setEndereco(palavras[2]);
-				p.setCpf(palavras[3]);
-				p.setTelefone(palavras[4]);
+				p.setCodigo(Integer.parseInt(palavras[1]));
+				p.setNome(palavras[2]);
+				p.setEndereco(palavras[3]);
+				p.setCpf(palavras[4]);
+				p.setTelefone(palavras[5]);
 
 				// listaCorretor.put(p.getCod(), p);
 				linha = lerArq.readLine();
@@ -62,8 +63,8 @@ public class LerBanco {
 		} catch (IOException e) {
 			System.err.printf("Erro na abertura do arquivo: %s.\n",
 					e.getMessage());
-		}
 
+		}
 	}
 
 	public void leituraImovel(Map<Integer, Imovel> listaImovel) {
@@ -117,25 +118,24 @@ public class LerBanco {
 				a.setObservações(palavras[4]);
 				a.setCorretor(Integer.parseInt(palavras[5]));
 				a.setImovel(Integer.parseInt(palavras[6]));
-				
-				//listaVisitas.put(contador++, a);
-				
+
+				// listaVisitas.put(contador++, a);
+
 				Set<String> lista = listaVisitas.keySet();
 				for (String key : lista) {
 					Agendamento agendamento = listaVisitas.get(key);
 					agendamento.getCorretor();
-					
+
 				}
 				linha = lerArq.readLine();
 			}
 			arq.close();
-		}catch (IOException e ){
-			System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.\n",
+					e.getMessage());
 		}
 	}
-	
-	
-	
+
 	public void leituraSecretario(Map<Integer, Secretario> listaSecretario) {
 		try {
 
@@ -154,7 +154,7 @@ public class LerBanco {
 				p.setEndereco(palavras[2]);
 				p.setCpf(palavras[3]);
 				p.setTelefone(palavras[4]);
-				
+
 				listaSecretario.put(p.getCod(), p);
 				linha = lerArq.readLine();
 			}
@@ -164,8 +164,7 @@ public class LerBanco {
 					e.getMessage());
 		}
 	}
-	
-	
+
 	public void leituraCorretor(Map<Integer, Corretor> listaCorretor) {
 		try {
 
@@ -185,7 +184,7 @@ public class LerBanco {
 				p.setEndereco(palavras[3]);
 				p.setCpf(palavras[4]);
 				p.setTelefone(palavras[5]);
-				
+
 				listaCorretor.put(p.getCod(), p);
 				linha = lerArq.readLine();
 			}

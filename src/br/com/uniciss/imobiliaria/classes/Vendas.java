@@ -20,8 +20,18 @@ public class Vendas {
 		
 		System.out.println("Infome o valor da venda:");
 		setValor(s.nextDouble());
+		
+		GravaTxt gravaArq = new GravaTxt();
+
+		gravaArq.grava("Vendas.txt", toString());
+
 
 	
+	}
+
+	@Override
+	public String toString() {
+		return "Vendas [cod=" + cod + ", valor=" + valor + "]";
 	}
 
 	public int getCod() {

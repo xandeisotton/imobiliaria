@@ -81,6 +81,12 @@ public class Cliente extends Pessoa {
 
 		System.out.println("Informe o número do telefone do ciente!");
 		setTelefone(cadastro.nextLine());
+		if (validaN(telefone) == false) {
+			do {
+				System.out.println("telefone deve conter somente numeros");
+				telefone = cadastro.next();
+			} while (validaN(telefone) == false);
+		}
 
 		System.out.println("Informe o banco em que o cliente tem conta!");
 		setBanco(cadastro.nextLine());

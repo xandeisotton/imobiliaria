@@ -82,10 +82,10 @@ public class Cliente extends Pessoa {
 		System.out.println("Informe o numero da conta do cliente!");
 		setNumConta(cadastro.nextLine());
 
-		List<Funcionario> listaClientes = new ArrayList<Funcionario>();
+		List<Funcionario> listaCliente = new ArrayList<Funcionario>();
 		LerBanco lbanco = new LerBanco();
-		lbanco.leituraFuncionario(listaClientes);
-		setCodigo(listaClientes.size());
+		lbanco.leituraFuncionario(listaCliente);
+		setCodigo(listaCliente.size());
 
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());

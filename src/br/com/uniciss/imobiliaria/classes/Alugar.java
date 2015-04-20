@@ -22,11 +22,13 @@ public class Alugar extends Imovel {
 		setCod(s.nextInt());
 		// validação do cód
 
+		System.out.println("Infome o código do cliente que esta alugando: ");
+		setCod(s.nextInt());
+		// validação do cód 
+		
 		System.out.println("Infome o valor da mensalidade");
 		setMensalidade(s.nextDouble());
 
-		System.out.println("Infome o código do locatário");
-		setCod(s.nextInt());
-		// validação do cód
+	
 	}
 }

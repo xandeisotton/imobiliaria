@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import br.com.uniciss.imobiliaria.classes.Corretor;
+import br.com.uniciss.imobiliaria.classes.Funcionario;
 import br.com.uniciss.imobiliaria.classes.Imovel;
 import br.com.uniciss.imobiliaria.classes.LerBanco;
 import br.com.uniciss.imobiliaria.classes.Secretario;
@@ -29,17 +30,16 @@ public class Menu {
 		int opc;
 		System.out.println("       ADMINISTRADOR");
 		System.out.println("------------------------");
-		System.out.println("1 - Cadastrar Secretária");
-		System.out.println("2 - Cadastrar Corretor");
-		System.out.println("3 - Sair");
+		System.out.println("1 - Cadastrar Funcionário");
+		System.out.println("2 - Sair");
 		System.out.println("------------------------");
 		s = new Scanner(System.in);
 		opc = s.nextInt();
 		switch (opc) {
 		case 1:
 			// CHAMA CADASTRO SECRETARIO
-			Secretario novosecretario = new Secretario();
-			novosecretario.incluirSecretario();
+			Funcionario f = new Funcionario();
+			f.cadastroFuncionario();
 			
 			System.out.println("1 - Voltar ao menu");
 			System.out.println("2 - Cadastrar outro funcionário");
@@ -55,36 +55,13 @@ public class Menu {
 			if (opi == 1){
 				menuAdmin();
 			}else if (opi == 2){
-				novosecretario.incluirSecretario();
-			}
+				f.cadastroFuncionario();			}
 			
 			break;
 			
-		case 2:
-			// CHAMA CADASTRO CORRETOR
-			Corretor novocorretor = new Corretor();
-			novocorretor.incluirCorretor();
-			
-			System.out.println("1 - Voltar ao menu");
-			System.out.println("2 - Cadastrar outro funcionário");
-			
-			int opic = s.nextInt();
-			s.nextLine();
-			
-			while(opic != 1 || opic != 2){
-				System.out.println("1 - Voltar ao menu");
-				System.out.println("2 - Cadastrar outro funcionário");
-			}
-			
-			if (opic == 1){
-				menuAdmin();
-			}else if (opic == 2){
-				novocorretor.incluirCorretor();
-			}
-			
-			break;
 
-		case 3:
+
+		case 2:
 			//RETORNA AO MENU OU INTERROMPE O PROGRAMA
 			System.out.println("Deseja fazer logoff?");
 			System.out.println("1 - Sim");

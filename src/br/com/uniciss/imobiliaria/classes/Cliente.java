@@ -97,7 +97,7 @@ public class Cliente extends Pessoa {
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());
 
-		entrada = new Scanner(System.in);
+		entrada = new Scanner(System.in); 
 	}
 
 	public void pesquisaCliente() throws Exception {

@@ -23,10 +23,10 @@ public class Secretario extends Funcionario {
 		return str.matches("[a-zA-Z ]+");
 	}
 
-	public void incluirSecretario() {
+	/*public void incluirSecretario() {
 		/*
 		 *  Procedimento para cadastrar Secretario;
-		 */
+		 
 		@SuppressWarnings("resource")
 		Scanner insere = new Scanner(System.in);
 
@@ -72,7 +72,7 @@ public class Secretario extends Funcionario {
 		gravaArq.grava("Funcionario.txt", toString());
 		gravaArq.grava("Usuario.txt", toStringUsuarios());
 
-	}
+	}*/
 
 	public String toString() {
 		return "Funcionario," + getCod() + "," + nome + "," + cpf + ","

@@ -31,10 +31,10 @@ public class Corretor extends Funcionario{
 		return str.matches("[a-zA-Z ]+");
 	}
 
-	public void incluirCorretor() {
+/*	public void incluirCorretor() {
 		/*
 		 *  Procedimento para cadastrar Corretor;
-		 */
+		
 		
 		@SuppressWarnings("resource")
 		Scanner insere = new Scanner(System.in);
@@ -77,7 +77,7 @@ public class Corretor extends Funcionario{
 
 		gravaArq.grava("Corretor.txt", toString());
 
-	}
+	}*/
 
 	public void alterarSecretario() {
 		// codificar metodos

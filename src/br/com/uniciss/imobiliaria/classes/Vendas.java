@@ -39,3 +39,13 @@ public class Vendas {
 		this.valor = valor;
 	}
 }
+/*System.out.println("Informe o nome do Paciente");
+String nome = teclado.nextLine();
+nome = nome.replace(" ", "");
+nome = nome.toLowerCase();
+
+for (Cliente paciente : listaPaciente) {
+String nomeDaVez = paciente.getNome().replace(" ", "");
+
+if (nomeDaVez.toLowerCase().equals(nome)) {
+System.out.println("------- Paciente " + paciente.getNome() */

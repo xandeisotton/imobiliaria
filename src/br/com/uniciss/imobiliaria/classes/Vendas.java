@@ -13,14 +13,15 @@ public class Vendas {
 
 		System.out.println("Informe o código do imóvel:");
 		setCod(s.nextInt());
+		
+		System.out.println("Infome o código do cliente que esta adquirindo:");
+		setCod(s.nextInt());
 		// validação do cód
-
+		
 		System.out.println("Infome o valor da venda:");
 		setValor(s.nextDouble());
 
-		System.out.println("Infome o código do cliente:");
-		setCod(s.nextInt());
-		// validação do cód
+	
 	}
 
 	public int getCod() {

@@ -3,9 +3,9 @@ package br.com.uniciss.imobiliaria.classes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class LerBanco {
 	public void leituraUsuario(Map<String, Usuario> listaUsuario) {
@@ -105,7 +105,7 @@ public class LerBanco {
 
 	}
 
-	public void leituraVisitas(Map<String, Agendamento> listaVisitas) {
+	public void leituraVisitas(ArrayList<Agendamento> listaVisitas) {
 		try {
 			FileReader arq = new FileReader("Visitas.txt");
 			BufferedReader lerArq = new BufferedReader(arq);
@@ -120,18 +120,12 @@ public class LerBanco {
 				a.setNome(palavras[1]);
 				a.setData(palavras[2]);
 				a.setHorario(palavras[3]);
-				a.setObservações(palavras[4]);
-				a.setCorretor(Integer.parseInt(palavras[5]));
-				a.setImovel(Integer.parseInt(palavras[6]));
+				a.setCorretor(Integer.parseInt(palavras[4]));
+				a.setImovel(Integer.parseInt(palavras[5]));
+				a.setObservações(palavras[6]);
 				
-				//listaVisitas.put(contador++, a);
+				listaVisitas.add(a);
 				
-				Set<String> lista = listaVisitas.keySet();
-				for (String key : lista) {
-					Agendamento agendamento = listaVisitas.get(key);
-					agendamento.getCorretor();
-					
-				}
 				linha = lerArq.readLine();
 			}
 			arq.close();

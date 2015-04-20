@@ -1,4 +1,4 @@
-Funcionario,null,dasdassa,10278282997,12,1
+Funcionario,0,dasdassa,10278282997,12,1
 Funcionario,0,null,08021536900,Rua,null
 Funcionario,0,Carol C,08021536900,Rua das C,2
 Funcionario,0,Carol CG,30813313740,Rua CG,2

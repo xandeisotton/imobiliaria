@@ -3,9 +3,8 @@ package br.com.uniciss.imobiliaria.classes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class LerBanco {
 	public void leituraUsuario(Map<String, Usuario> listaUsuario) {
@@ -37,11 +36,10 @@ public class LerBanco {
 
 	}
 
-	public void leituraFuncionario(List<Funcionario> listaFuncionarios)
-			throws IOException {
+	public void leituraFuncionario() throws IOException {
 		try {
 
-			FileReader arq = new FileReader("Funcionario.txt");
+			FileReader arq = new FileReader("Corretor.txt");
 			BufferedReader lerArq = new BufferedReader(arq);
 			String linha = lerArq.readLine();
 
@@ -52,43 +50,12 @@ public class LerBanco {
 				Corretor p = new Corretor();
 
 				// Passa a ordem de cada campo
-				p.setCodigo(Integer.parseInt(palavras[1]));
-				p.setNome(palavras[2]);
-				p.setEndereco(palavras[3]);
-				p.setCpf(palavras[4]);
-				p.setTelefone(palavras[5]);
-				listaFuncionarios.add(p);
+				p.setNome(palavras[1]);
+				p.setEndereco(palavras[2]);
+				p.setCpf(palavras[3]);
+				p.setTelefone(palavras[4]);
 
-				linha = lerArq.readLine();
-			}
-			arq.close();
-		} catch (IOException e) {
-			System.err.printf("Erro na abertura do arquivo: %s.\n",
-					e.getMessage());
-		}
-
-	}
-
-	public void leituraClientes(List<Cliente> listaCliente) throws IOException {
-		try {
-
-			FileReader arq = new FileReader("Cliente.txt");
-			BufferedReader lerArq = new BufferedReader(arq);
-			String linha = lerArq.readLine();
-
-			while (linha != null) {
-
-				String palavras[] = linha.split(",");
-				// Instanciacao de um novo usuario
-				Cliente p = new Cliente();
-
-				// Passa a ordem de cada campo
-				p.setCodigo(Integer.parseInt(palavras[1]));
-				p.setNome(palavras[2]);
-				p.setEndereco(palavras[3]);
-				p.setCpf(palavras[4]);
-				p.setTelefone(palavras[5]);
-				listaCliente.add(p);
+				// listaCorretor.put(p.getCod(), p);
 				linha = lerArq.readLine();
 			}
 			arq.close();
@@ -132,7 +99,7 @@ public class LerBanco {
 
 	}
 
-	public void leituraVisitas(ArrayList<Agendamento> listaVisitas) {
+	public void leituraVisitas(Map<String, Agendamento> listaVisitas) {
 		try {
 			FileReader arq = new FileReader("Visitas.txt");
 			BufferedReader lerArq = new BufferedReader(arq);
@@ -147,36 +114,28 @@ public class LerBanco {
 				a.setNome(palavras[1]);
 				a.setData(palavras[2]);
 				a.setHorario(palavras[3]);
-<<<<<<< HEAD
 				a.setObservações(palavras[4]);
 				a.setCorretor(Integer.parseInt(palavras[5]));
 				a.setImovel(Integer.parseInt(palavras[6]));
-
-				// listaVisitas.put(contador++, a);
-
+				
+				//listaVisitas.put(contador++, a);
+				
 				Set<String> lista = listaVisitas.keySet();
 				for (String key : lista) {
 					Agendamento agendamento = listaVisitas.get(key);
 					agendamento.getCorretor();
-
+					
 				}
-=======
-				a.setCorretor(Integer.parseInt(palavras[4]));
-				a.setImovel(Integer.parseInt(palavras[5]));
-				a.setObservações(palavras[6]);
-				
-				listaVisitas.add(a);
-				
->>>>>>> branch 'master' of https://github.com/xandeisotton/imobiliaria.git
 				linha = lerArq.readLine();
 			}
 			arq.close();
-		} catch (IOException e) {
-			System.err.printf("Erro na abertura do arquivo: %s.\n",
-					e.getMessage());
+		}catch (IOException e ){
+			System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
 		}
 	}
-
+	
+	
+	
 	public void leituraSecretario(Map<Integer, Secretario> listaSecretario) {
 		try {
 
@@ -191,12 +150,11 @@ public class LerBanco {
 				Secretario p = new Secretario();
 
 				// Passa a ordem de cada campo
-				p.setCod(Integer.parseInt(palavras[1]));
-				p.setNome(palavras[2]);
-				p.setEndereco(palavras[3]);
-				p.setCpf(palavras[4]);
-				p.setTelefone(palavras[5]);
-
+				p.setNome(palavras[1]);
+				p.setEndereco(palavras[2]);
+				p.setCpf(palavras[3]);
+				p.setTelefone(palavras[4]);
+				
 				listaSecretario.put(p.getCod(), p);
 				linha = lerArq.readLine();
 			}
@@ -206,7 +164,8 @@ public class LerBanco {
 					e.getMessage());
 		}
 	}
-
+	
+	
 	public void leituraCorretor(Map<Integer, Corretor> listaCorretor) {
 		try {
 
@@ -226,7 +185,7 @@ public class LerBanco {
 				p.setEndereco(palavras[3]);
 				p.setCpf(palavras[4]);
 				p.setTelefone(palavras[5]);
-
+				
 				listaCorretor.put(p.getCod(), p);
 				linha = lerArq.readLine();
 			}

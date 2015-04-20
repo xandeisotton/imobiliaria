@@ -46,9 +46,12 @@ public class Menu {
 			int opi = s.nextInt();
 			s.nextLine();
 			
-			while(opi != 1 || opi != 2){
+			while(opi != 1 && opi != 2){
+				System.out.println("Opção inválida, tente novamente!");
+				System.out.println("");
 				System.out.println("1 - Voltar ao menu");
 				System.out.println("2 - Cadastrar outro funcionário");
+				opi = s.nextInt();
 			}
 			
 			if (opi == 1){

@@ -86,7 +86,7 @@ public class Agendamento {
 		LerBanco ler = new LerBanco();
 		ler.leituraCorretor(mapaCorretor);
 		ler.leituraImovel(mapaImovel);
-		//ler.leituraVisitas(listaVisitas);
+		ler.leituraVisitas(listaVisitas);
 		
 		s = new Scanner(System.in);
 

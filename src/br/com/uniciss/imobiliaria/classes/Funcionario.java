@@ -38,14 +38,14 @@ public class Funcionario extends Pessoa {
 			} while (validaN(telefone) == false);
 		}
 
-		String quantidadeNumeros = String.valueOf(telefone);
-
-		if (quantidadeNumeros.length() < 8) {
-			do {
-				System.out.println("Telefone deve conter no mínimo 8 digitos");
-				telefone = scanner.next();
-			} while (quantidadeNumeros.length() < 8);
-		}
+		// String quantidadeNumeros = String.valueOf(telefone);
+		//
+		// if (quantidadeNumeros.length() < 8) {
+		// do {
+		// System.out.println("Telefone deve conter no mínimo 8 digitos");
+		// telefone = scanner.next();
+		// } while (quantidadeNumeros.length() < 8);
+		// }
 
 		System.out
 				.println("Insira o tipo funcionario : 1 - Corretor / 2 - Secretario");
@@ -56,14 +56,14 @@ public class Funcionario extends Pessoa {
 					.println("Insira o tipo funcionario : 1 - Corretor / 2 - Secretario");
 			opcao = scanner.nextInt();
 		}
-
-		if (opcao == 1) {
-			u.setTipo("1");
-			return;
-		} else if (opcao == 2) {
-			u.setTipo("2");
-			return;
-		}
+		//
+		// if (opcao == 1) {
+		// u.setTipo("1");
+		// return;
+		// } else if (opcao == 2) {
+		// u.setTipo("2");
+		// return;
+		// }
 
 		System.out.println("Insira o numero do CPF:(Somente números.)");
 		setCpf(scanner.next());
@@ -81,6 +81,7 @@ public class Funcionario extends Pessoa {
 		String linha = "";
 		BufferedReader in = new BufferedReader(
 				new FileReader("Funcionario.txt"));
+
 		do {
 			if (linha.contains(cpf)) {
 				System.out.println("Cpf já está cadastrado, insira novamente");

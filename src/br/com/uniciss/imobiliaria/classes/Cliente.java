@@ -17,7 +17,7 @@ public class Cliente extends Pessoa {
 	public static Map<String, Cliente> mapaDeClientes = new HashMap<String, Cliente>();
 	protected String banco;
 	protected String numConta;
-	protected String codigo;
+	protected int codigo;
 	private Scanner cadastro;
 	private Scanner entrada;
 	private BufferedReader in;
@@ -38,12 +38,12 @@ public class Cliente extends Pessoa {
 		this.numConta = numConta;
 	}
 
-	public String getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigo(int i) {
+		this.codigo = i;
 	}
 
 	@Override
@@ -97,8 +97,13 @@ public class Cliente extends Pessoa {
 		GravaTxt g = new GravaTxt();
 		g.grava("Cliente.txt", toString());
 
-		entrada = new Scanner(System.in); 
-	}   
+		List<Cliente> listaclientes = new ArrayList<Cliente>();
+		LerBanco lbanco = new LerBanco();
+		lbanco.leituraFuncionario();
+		setCodigo(listaclientes.size());
+
+		entrada = new Scanner(System.in);
+	}
 
 	public void pesquisaCliente() throws Exception {
 

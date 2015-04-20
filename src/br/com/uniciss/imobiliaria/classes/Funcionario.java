@@ -97,7 +97,7 @@ public class Funcionario extends Pessoa {
 	}
 
 	public String toStringUsuarios() {
-		return "Usuario," + "," + u.getLogin() + "," + u.getSenha() + ","
+		return "Usuario," + u.getLogin() + "," + u.getSenha() + ","
 				+ u.getTipo() + "," + getCodigo();
 	}
 

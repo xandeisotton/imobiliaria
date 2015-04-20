@@ -3,6 +3,7 @@ package br.com.uniciss.imobiliaria.classes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,8 +36,9 @@ public class LerBanco {
 		}
 
 	}
-
-	public void leituraFuncionario() throws IOException {
+	
+	
+	public void leituraFuncionario(List<Funcionario>listaFuncionarios) throws IOException {
 		try {
 
 			FileReader arq = new FileReader("Corretor.txt");
@@ -50,10 +52,12 @@ public class LerBanco {
 				Corretor p = new Corretor();
 
 				// Passa a ordem de cada campo
-				p.setNome(palavras[1]);
-				p.setEndereco(palavras[2]);
-				p.setCpf(palavras[3]);
-				p.setTelefone(palavras[4]);
+				p.setCodigo(Integer.parseInt(palavras[1]));
+				p.setNome(palavras[2]);
+				p.setEndereco(palavras[3]);
+				p.setCpf(palavras[4]);
+				p.setTelefone(palavras[5]);
+				listaFuncionarios.add(p);
 
 				// listaCorretor.put(p.getCod(), p);
 				linha = lerArq.readLine();
@@ -65,6 +69,8 @@ public class LerBanco {
 		}
 
 	}
+
+	
 
 	public void leituraImovel(Map<Integer, Imovel> listaImovel) {
 		try {
